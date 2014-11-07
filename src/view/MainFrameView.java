@@ -19,7 +19,6 @@ public class MainFrameView extends JFrame{
      * Constructor for the view.
      * Sets the default:
      * <ul>
-     * <li>Title
      * <li>Close Operation
      * <li>Size
      * </ul>
@@ -28,20 +27,11 @@ public class MainFrameView extends JFrame{
      */
     public MainFrameView()
     {
-        setTitle("Default");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize (600, 800);
         setUndecorated(true);
         setVisible(true);
         setLocationRelativeTo(null);
-    }
-    /**
-     * Sets the frame title.
-     * @param title as a String
-     */
-    public void setFrameTitle(String title)
-    {
-        this.setTitle(title);
     }
     /**
      * Returns the width variable.

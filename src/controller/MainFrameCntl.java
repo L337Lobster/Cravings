@@ -53,20 +53,39 @@ public class MainFrameCntl {
     }
     public void initClosePanel()
     {
+        //Create a JPanel to replace the top bar.
         JPanel close = new JPanel();
-        close.setBackground(Color.blue);
+        //Set the background color of the panel so it's noticible
+        close.setBackground(new Color(200,61,255));
+        //Create the close listener and the move listener
         CloseListener closeListen = new CloseListener();
         MoveWindowListener moveWindow = new MoveWindowListener();
-        close.addMouseMotionListener(moveWindow);
+        
+        //Create a JLabel to replace the title and a button to replace the close button
+        JLabel title = new JLabel("<html><center>"+model.getTitle()+"</center></html>", JLabel.CENTER);
         JButton exit = new JButton("<html><center>X</center></html>");
-        exit.setMargin(new Insets(0,-30, 0,-30));
-        exit.setFont(exit.getFont().deriveFont(20.0f));
-        exit.setBackground(Color.red);
+        //add the listeners to the panel and the button
+        close.addMouseMotionListener(moveWindow);
         exit.addActionListener(closeListen);
+        //remove the margins from the button so that the X is centered
+        exit.setMargin(new Insets(0,-30, 0,-30));
+        //set the size of the X
+        exit.setFont(exit.getFont().deriveFont(10.0f));
+        title.setFont(title.getFont().deriveFont(15.0f));
+        //make the button red
+        exit.setBackground(new Color(199,80,80));
+        //make the exit button text white
+        exit.setForeground(Color.white);
+        //make the panel use a null layout
         close.setLayout(null);
+        //add the exit button and title
         close.add(exit);
-        close.setPreferredSize(new Dimension(view.getWidth(),25));
-        exit.setBounds(new Rectangle(view.getWidth()-25, 0, 25,25));
+        close.add(title);
+        //set the size of the panel so it's exactly what I want.
+        close.setPreferredSize(new Dimension(view.getWidth(),21));
+        //position the button and label on the panel
+        exit.setBounds(new Rectangle(view.getWidth()-44, 0, 45,17));
+        title.setBounds(new Rectangle(0, 0, view.getWidth()-25, 25));
         view.add(close, "North");
         
     }
