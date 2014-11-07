@@ -14,9 +14,9 @@ import java.util.ArrayList;
  */
 public class UserList {
     
-    private static ArrayList<User> theListOfusers = new ArrayList();
+    private static ArrayList<User> theListOfUsers = new ArrayList();
     
     public static ArrayList<User> getTheListOfUser(){
-        return theListOfusers;
+        return theListOfUsers;
     }
 }

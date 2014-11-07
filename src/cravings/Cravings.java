@@ -6,6 +6,8 @@
 
 package cravings;
 
+import controller.AuthenticationCntl;
+
 /**
  *
  * @author srh10
@@ -18,6 +20,8 @@ public class Cravings {
     public static void main(String[] args) {
         // TODO code application logic here
         AuthenticationCntl theAuthenticationCntl = new AuthenticationCntl();
+        
+        theAuthenticationCntl.showLoginUI();
         
         
     }
