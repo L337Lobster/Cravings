@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.LoginCntl;
 import javax.swing.*;
 
 /**
@@ -16,12 +17,45 @@ public class LoginView {
     private JLabel usernameLabel, passwordLabel;
     private JTextField usernameField;
     private JPasswordField passwordField;
+    private LoginCntl theLoginCntl;
     /**
      * Constructor, currently does nothing.
      */
     public LoginView()
     {
         
+    }
+    /**
+     * Returns the label used for the Username Field.
+     * @return usernameLabel JLabel
+     */
+    public JLabel getUsernameLabel()
+    {
+        return usernameLabel;
+    }
+    /**
+     * Returns the label used for the password field.
+     * @return passwordLabel JLabel
+     */
+    public JLabel getPasswordLabel()
+    {
+        return passwordLabel;
+    }
+    /**
+     * Set usernameLabel to the JLabel label
+     * @param label The new JLabel used for the password field.
+     */
+    public void setUsernameLabel(JLabel label)
+    {
+        usernameLabel = label;
+    }
+    /**
+     * Set passwordLabel to the JLabel label
+     * @param label The new JLabel used for the password field
+     */
+    public void setPasswordLabel(JLabel label)
+    {
+        passwordLabel = label;
     }
     /**
      * Returns the submit button.
@@ -47,9 +81,37 @@ public class LoginView {
     {
         return passwordField;
     }
+    /**
+     * Sets the password field.
+     * @param field JPasswordField used for the password.
+     */
     public void setPasswordField(JPasswordField field)
     {
         passwordField = field;
+    }
+    /**
+     * Sets the username field.
+     * @param field JTextField used for the username.
+     */
+    public void setUsernameField(JTextField field)
+    {
+        usernameField = field;
+    }
+    /**
+     * Sets the Login controller for this.
+     * @param controller LoginCntl
+     */
+    public void setLoginCntl(LoginCntl controller)
+    {
+        theLoginCntl = controller;
+    }
+    /**
+     * Returns the current login controller.
+     * @return theLoginCntl LoginCntl.
+     */
+    public LoginCntl getLoginCntl()
+    {
+        return theLoginCntl;
     }
     
     
