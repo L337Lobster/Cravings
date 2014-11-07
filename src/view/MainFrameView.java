@@ -31,6 +31,7 @@ public class MainFrameView extends JFrame{
         setTitle("Default");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize (600, 800);
+        setUndecorated(true);
         setVisible(true);
         setLocationRelativeTo(null);
     }
