@@ -33,7 +33,7 @@ public class SplashView extends JPanel{
     {
         if(splashImage == null)
         {
-            return new ImageIcon("images/blank.png");
+            return new ImageIcon("images/default.png");
         }
         return splashImage;
     }
