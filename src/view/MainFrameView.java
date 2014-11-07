@@ -6,6 +6,7 @@
 package view;
 
 import controller.MainFrameCntl;
+import java.awt.Dimension;
 import javax.swing.JFrame;
 
 /**
@@ -66,6 +67,26 @@ public class MainFrameView extends JFrame{
     public void setHeight(int height)
     {
         this.height = height;
+    }
+    /**
+     * Sets both the with and the height values.
+     * These values represent the width and height of the frame.
+     * @param width int
+     * @param height int
+     */
+    public void setSizeValues(int width, int height)
+    {
+        this.width = width;
+        this.height = height;
+    }
+    /**
+     * Returns both the width and the height as a Dimension.
+     * This dimension is used to represent the dimension of the frame.
+     * @return new Dimension(width, height)
+     */
+    public Dimension getSizeValues()
+    {
+        return new Dimension(width, height);
     }
     /**
      * Refresh the size of the window to the currently set values.
