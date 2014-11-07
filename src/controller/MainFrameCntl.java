@@ -20,6 +20,7 @@ import view.SplashView;
 public class MainFrameCntl {
     private MainFrameView view;
     private MainFrameModel model;
+    private JLabel title;
     public int mouseX, mouseY, mouseX2,mouseY2;
     /**
      * Sets the instance variables to the model and view that were passed.
@@ -43,7 +44,6 @@ public class MainFrameCntl {
      */
     public void initView()
     {
-        view.setTitle(model.getTitle());
         view.setSize(model.getWidth(), model.getHeight());
         view.setHeight(model.getHeight());
         view.setWidth(model.getWidth());
@@ -62,32 +62,56 @@ public class MainFrameCntl {
         MoveWindowListener moveWindow = new MoveWindowListener();
         
         //Create a JLabel to replace the title and a button to replace the close button
-        JLabel title = new JLabel("<html><center>"+model.getTitle()+"</center></html>", JLabel.CENTER);
+        title = new JLabel("<html><center>"+model.getTitle()+"</center></html>", JLabel.CENTER);
         JButton exit = new JButton("<html><center>X</center></html>");
+        
         //add the listeners to the panel and the button
         close.addMouseMotionListener(moveWindow);
         exit.addActionListener(closeListen);
+        
         //remove the margins from the button so that the X is centered
         exit.setMargin(new Insets(0,-30, 0,-30));
+        
         //set the size of the X
         exit.setFont(exit.getFont().deriveFont(10.0f));
         title.setFont(title.getFont().deriveFont(15.0f));
-        //make the button red
+        
+        //make the button red and the text white
         exit.setBackground(new Color(199,80,80));
-        //make the exit button text white
         exit.setForeground(Color.white);
+        
         //make the panel use a null layout
         close.setLayout(null);
+        
         //add the exit button and title
         close.add(exit);
         close.add(title);
+        
         //set the size of the panel so it's exactly what I want.
         close.setPreferredSize(new Dimension(view.getWidth(),21));
+        
         //position the button and label on the panel
         exit.setBounds(new Rectangle(view.getWidth()-44, 0, 45,17));
         title.setBounds(new Rectangle(0, 0, view.getWidth()-25, 25));
+        
+        //add the panel to the frame
         view.add(close, "North");
         
+    }
+    /**
+     * Set the title of the frame.
+     * @param title String value for the new title
+     */
+    public void setTitle(String title)
+    {
+        if(title.equalsIgnoreCase("Cravings"))
+        {
+            this.title.setText(title);
+        }
+        else
+        {
+            this.title.setText("Cravings - "+title);
+        }
     }
     /**
      * Initializes the splash screen.

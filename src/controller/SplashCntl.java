@@ -9,7 +9,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import model.LoginModel;
 import model.SplashModel;
+import view.LoginView;
 import view.MainFrameView;
 import view.SplashView;
 
@@ -83,11 +85,10 @@ public class SplashCntl {
         public void actionPerformed(ActionEvent ae) {
             
             displayTime.stop();
-            JPanel panel = new JPanel();
-            JLabel test = new JLabel("Test");
-            panel.add(test);
-            frame.getMainFrameCntl().replacePanel(view, panel);
-            
+            LoginView theLoginView = new LoginView();
+            LoginModel theLoginModel = new LoginModel();
+            LoginCntl theLoginCntl = new LoginCntl(theLoginView, theLoginModel, frame);
+            theLoginCntl.initView();
         }
         
         
