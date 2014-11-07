@@ -14,7 +14,9 @@ import view.MainFrameView;
  * @author srh10
  */
 public class AuthenticationCntl {
-    
+    /**
+     * Shows the Splash Screen then the LoginView.
+     */
     public void showLoginUI(){
         MainFrameView theMainFrameView = new MainFrameView();
         MainFrameModel theMainFrameModel = new MainFrameModel("Cravings",600,800);
@@ -24,7 +26,9 @@ public class AuthenticationCntl {
         theMainFrameCntl.initCustomComponents();
         
     }
-    
+    /**
+     * Gets the list of users.
+     */
     public void getUserList(){
         
     }

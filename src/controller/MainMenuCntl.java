@@ -16,6 +16,11 @@ public class MainMenuCntl {
     
     private MainMenuView view;
     private MainMenuModel model;
+    /**
+     * Constructor that sets the view and model.
+     * @param view Controlled view
+     * @param model Controlled model
+     */
     public MainMenuCntl(MainMenuView view, MainMenuModel model)
     {
         this.view = view;
