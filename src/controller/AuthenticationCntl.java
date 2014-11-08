@@ -6,6 +6,9 @@
 
 package controller;
 
+import cravings.User;
+import cravings.UserList;
+import java.util.ArrayList;
 import model.LoginModel;
 import model.MainFrameModel;
 import model.SplashModel;
@@ -21,9 +24,11 @@ public class AuthenticationCntl {
     private MainFrameView theMainFrameView;
     private SplashView splashScreen;
     private LoginView theLoginView;
+    private UserList theUserList;
     
     public AuthenticationCntl()
     {
+        theUserList = new UserList();
         createMainFrame();
         showSplashUI();
     }
@@ -54,6 +59,16 @@ public class AuthenticationCntl {
         theMainFrameCntl.setAuthenticationCntl(this);
         
     }
+    public boolean Authenticate(User testUser)
+    {
+        boolean authenticated = false;
+        ArrayList<User> temp = getUserList().getTheListOfUser();
+        if(temp.contains(testUser))
+        {
+            authenticated = true;
+        }
+        return authenticated;
+    }
     public LoginView getLoginView()
     {
         return theLoginView;
@@ -61,8 +76,8 @@ public class AuthenticationCntl {
     /**
      * Gets the list of users.
      */
-    public void getUserList(){
-        
+    public UserList getUserList(){
+        return theUserList;
     }
     
     

@@ -44,8 +44,11 @@ public class LoginModel {
     }
     public void initBounds()
     {
-        usernameLabel.setBounds(new Rectangle(width/6,height/4,300,50));
-        passwordLabel.setBounds(new Rectangle(width/3,height/4,300,50));
+        usernameLabel.setBounds(new Rectangle(width/8,height/4,150,25));
+        passwordLabel.setBounds(new Rectangle(width/4+100,height/4,150,25));
+        usernameField.setBounds(new Rectangle(width/8,(height/4)+35,110,25));
+        passwordField.setBounds(new Rectangle(width/4+100,(height/4)+35,110,25));
+        loginButton.setBounds(new Rectangle((width/4)+135, (height/4)+70, 75, 25));
     }
     public void setSizeValue(Dimension x)
     {

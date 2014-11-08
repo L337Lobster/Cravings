@@ -5,6 +5,10 @@
  */
 package controller;
 
+import cravings.User;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import model.LoginModel;
 import view.LoginView;
 import view.MainFrameView;
@@ -27,8 +31,10 @@ public class LoginCntl {
     
     public void initView()
     {
-        frame.getMainFrameCntl().getView().setSizeValues(frame.getMainFrameCntl().getModel().getWidth(), 400);
+        
+        frame.getMainFrameCntl().getView().setSizeValues(frame.getMainFrameCntl().getModel().getWidth()-200, 200);
         frame.getMainFrameCntl().getView().refreshSize();
+        frame.getMainFrameCntl().refreshCloseSize();
         frame.getMainFrameCntl().setTitle("Login");
         model.setSizeValue(frame.getSizeValues());
         model.initBounds();
@@ -44,7 +50,33 @@ public class LoginCntl {
         
         view.setLoginCntl(this);
         
+        frame.getRootPane().setDefaultButton(view.getLoginButton());
+        
         view.add(view.getUsernameLabel());
         view.add(view.getPasswordLabel());
+        view.add(view.getUsernameField());
+        view.add(view.getPasswordField());
+        view.add(view.getLoginButton());
+        LoginListener theLoginListener = new LoginListener();
+        view.getLoginButton().addActionListener(theLoginListener);
+    }
+    
+    public class LoginListener implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            String username = view.getUsernameField().getText();
+            char[] password = view.getPasswordField().getText().toCharArray();
+            if(frame.getMainFrameCntl().getAuthenticationCntl().Authenticate(new User(username, password)))
+            {
+                JOptionPane.showMessageDialog(view,"Login Successful!");
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(view,"Login FAILURE!!");
+            }
+        }
+        
     }
 }

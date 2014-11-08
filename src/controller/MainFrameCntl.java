@@ -20,6 +20,8 @@ import view.SplashView;
 public class MainFrameCntl {
     private MainFrameView view;
     private MainFrameModel model;
+    private JPanel close;
+    private JButton exit;
     private JLabel title;
     private AuthenticationCntl theAuthenticationCntl;
     public int mouseX, mouseY, mouseX2,mouseY2;
@@ -53,13 +55,18 @@ public class MainFrameCntl {
         view.setMainFrameCntl(this);
         
     }
+    public void refreshCloseSize()
+    {
+        exit.setBounds(new Rectangle(view.getWidth()-44, 0, 45,17));
+        title.setBounds(new Rectangle(0, 0, view.getWidth()-25, 25));
+    }
     /**
      * Creates the title bar and adds it to the North of the frame.
      */
     public void initClosePanel()
     {
         //Create a JPanel to replace the top bar.
-        JPanel close = new JPanel();
+        close = new JPanel();
         //Set the background color of the panel so it's noticible
         close.setBackground(new Color(200,61,255));
         //Create the close listener and the move listener
@@ -68,7 +75,7 @@ public class MainFrameCntl {
         
         //Create a JLabel to replace the title and a button to replace the close button
         title = new JLabel("<html><center>"+model.getTitle()+"</center></html>", JLabel.CENTER);
-        JButton exit = new JButton("<html><center>X</center></html>");
+        exit = new JButton("<html><center>X</center></html>");
         
         //add the listeners to the panel and the button
         close.addMouseMotionListener(moveWindow);
