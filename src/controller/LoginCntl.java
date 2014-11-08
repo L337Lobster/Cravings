@@ -27,6 +27,7 @@ public class LoginCntl {
         this.view = view;
         this.model = model;
         this.frame = frame;
+        initView();
     }
     
     public void initView()
@@ -60,7 +61,6 @@ public class LoginCntl {
         LoginListener theLoginListener = new LoginListener();
         view.getLoginButton().addActionListener(theLoginListener);
     }
-    
     public class LoginListener implements ActionListener
     {
 
@@ -70,7 +70,7 @@ public class LoginCntl {
             char[] password = view.getPasswordField().getText().toCharArray();
             if(frame.getMainFrameCntl().getAuthenticationCntl().Authenticate(new User(username, password)))
             {
-                JOptionPane.showMessageDialog(view,"Login Successful!");
+                frame.getMainFrameCntl().getAuthenticationCntl().showMainMenuUI(view);
             }
             else
             {

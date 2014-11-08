@@ -25,6 +25,7 @@ public class MainFrameCntl {
     private JLabel title;
     private AuthenticationCntl theAuthenticationCntl;
     public int mouseX, mouseY, mouseX2,mouseY2;
+    private CloseListener closeListen = new CloseListener();
     /**
      * Sets the instance variables to the model and view that were passed.
      * @param view The MainFrameView that is being controlled.
@@ -70,7 +71,6 @@ public class MainFrameCntl {
         //Set the background color of the panel so it's noticible
         close.setBackground(new Color(200,61,255));
         //Create the close listener and the move listener
-        CloseListener closeListen = new CloseListener();
         MoveWindowListener moveWindow = new MoveWindowListener();
         
         //Create a JLabel to replace the title and a button to replace the close button
@@ -109,6 +109,10 @@ public class MainFrameCntl {
         //add the panel to the frame
         view.add(close, "North");
         
+    }
+    public CloseListener getCloseListener()
+    {
+        return closeListen;
     }
     public void setAuthenticationCntl(AuthenticationCntl controller)
     {

@@ -8,13 +8,11 @@ package controller;
 
 import cravings.User;
 import cravings.UserList;
+import java.awt.Dimension;
 import java.util.ArrayList;
-import model.LoginModel;
-import model.MainFrameModel;
-import model.SplashModel;
-import view.LoginView;
-import view.MainFrameView;
-import view.SplashView;
+import javax.swing.JPanel;
+import model.*;
+import view.*;
 
 /**
  *
@@ -25,6 +23,8 @@ public class AuthenticationCntl {
     private SplashView splashScreen;
     private LoginView theLoginView;
     private UserList theUserList;
+    private MainMenuView theMainMenuView;
+    private final Dimension defaultDimension = new Dimension(600,800);
     
     public AuthenticationCntl()
     {
@@ -41,7 +41,6 @@ public class AuthenticationCntl {
         theLoginView = new LoginView();
         LoginModel theLoginModel = new LoginModel();
         LoginCntl theLoginCntl = new LoginCntl(theLoginView, theLoginModel, theMainFrameView);
-        theLoginCntl.initView();
     }
     public void showSplashUI()
     {
@@ -58,6 +57,13 @@ public class AuthenticationCntl {
         MainFrameCntl theMainFrameCntl = new MainFrameCntl(theMainFrameView, theMainFrameModel);
         theMainFrameCntl.setAuthenticationCntl(this);
         
+    }
+    public void showMainMenuUI(JPanel panel)
+    {
+        theMainMenuView = new MainMenuView();
+        theMainFrameView.getMainFrameCntl().replacePanel(panel, theMainMenuView);
+        MainMenuModel theMainMenuModel = new MainMenuModel(defaultDimension);
+        MainMenuCntl theMainMenuCntl = new MainMenuCntl(theMainMenuView, theMainMenuModel, theMainFrameView);
     }
     public boolean Authenticate(User testUser)
     {
