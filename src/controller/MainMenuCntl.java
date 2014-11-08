@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.awt.Rectangle;
 import model.MainMenuModel;
 import view.MainFrameView;
 import view.MainMenuView;
@@ -29,6 +30,7 @@ public class MainMenuCntl {
         this.model = model;
         this.frame = frame;
         initView();
+        initBounds();
     }
     
     public void initView()
@@ -59,7 +61,10 @@ public class MainMenuCntl {
     
     public void initBounds()
     {
-        view.getFoodButton();
+        view.getFoodButton().setBounds(new Rectangle(0,0,model.getSizeValue().width/2,model.getSizeValue().height/2));
+        view.getFseButton().setBounds(new Rectangle(model.getSizeValue().width/2,0,model.getSizeValue().width/2,model.getSizeValue().height/2));
+        view.getFindFoodButton().setBounds(new Rectangle(0,model.getSizeValue().height/2,model.getSizeValue().width/2,model.getSizeValue().height/2));
+        view.getQuitButton().setBounds(new Rectangle(model.getSizeValue().width/2,model.getSizeValue().height/2,model.getSizeValue().width/2,model.getSizeValue().height/2));
     }
     
     
