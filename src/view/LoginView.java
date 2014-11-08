@@ -6,14 +6,15 @@
 package view;
 
 import controller.LoginCntl;
+import java.awt.LayoutManager;
 import javax.swing.*;
 
 /**
  *
  * @author Jackson Hofmann
  */
-public class LoginView {
-    private JButton LoginButton;
+public class LoginView extends JPanel{
+    private JButton loginButton;
     private JLabel usernameLabel, passwordLabel;
     private JTextField usernameField;
     private JPasswordField passwordField;
@@ -63,7 +64,11 @@ public class LoginView {
      */
     public JButton getLoginButton()
     {
-        return LoginButton;
+        return loginButton;
+    }
+    public void setLoginButton(JButton button)
+    {
+        loginButton = button;
     }
     /**
      * Returns the username text field.
@@ -112,6 +117,10 @@ public class LoginView {
     public LoginCntl getLoginCntl()
     {
         return theLoginCntl;
+    }
+    public void setLayoutManager(LayoutManager layout)
+    {
+        this.setLayout(layout);
     }
     
     

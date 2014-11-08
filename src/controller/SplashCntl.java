@@ -41,7 +41,7 @@ public class SplashCntl {
         this.model = model;
         this.frame = frame;
         TimerListener tick = new TimerListener();
-        displayTime = new Timer(5000, tick);
+        displayTime = new Timer(3000, tick);
         initView();
         //initTest();
         this.frame.getMainFrameCntl().addPanel(this.view);
@@ -67,6 +67,7 @@ public class SplashCntl {
         view.setSplashLabel(model.getSplashLabel());
         view.getSplashLabel().setIcon(model.getSplashImage());
         view.add(view.getSplashLabel());
+        frame.getMainFrameCntl().setTitle("Splash");
         view.getSplashLabel().setBounds(new Rectangle(20,75, 550, 550));
     }
     /**
@@ -85,10 +86,8 @@ public class SplashCntl {
         public void actionPerformed(ActionEvent ae) {
             
             displayTime.stop();
-            LoginView theLoginView = new LoginView();
-            LoginModel theLoginModel = new LoginModel();
-            LoginCntl theLoginCntl = new LoginCntl(theLoginView, theLoginModel, frame);
-            theLoginCntl.initView();
+            frame.getMainFrameCntl().getAuthenticationCntl().showLoginUI();
+            frame.getMainFrameCntl().replacePanel(view, frame.getMainFrameCntl().getAuthenticationCntl().getLoginView());
         }
         
         

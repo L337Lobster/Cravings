@@ -27,6 +27,24 @@ public class LoginCntl {
     
     public void initView()
     {
+        frame.getMainFrameCntl().getView().setSizeValues(frame.getMainFrameCntl().getModel().getWidth(), 400);
+        frame.getMainFrameCntl().getView().refreshSize();
         frame.getMainFrameCntl().setTitle("Login");
+        model.setSizeValue(frame.getSizeValues());
+        model.initBounds();
+        view.setLayoutManager(null);
+        
+        view.setPasswordLabel(model.getPasswordLabel());
+        view.setPasswordField(model.getPasswordField());
+        
+        view.setUsernameLabel(model.getUsernameLabel());
+        view.setUsernameField(model.getUsernameField());
+        
+        view.setLoginButton(model.getLoginButton());
+        
+        view.setLoginCntl(this);
+        
+        view.add(view.getUsernameLabel());
+        view.add(view.getPasswordLabel());
     }
 }

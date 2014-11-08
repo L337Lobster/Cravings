@@ -21,6 +21,7 @@ public class MainFrameCntl {
     private MainFrameView view;
     private MainFrameModel model;
     private JLabel title;
+    private AuthenticationCntl theAuthenticationCntl;
     public int mouseX, mouseY, mouseX2,mouseY2;
     /**
      * Sets the instance variables to the model and view that were passed.
@@ -31,6 +32,8 @@ public class MainFrameCntl {
     {
         this.view = view;
         this.model = model;
+        initView();
+        initClosePanel();
     }
     /**
      * Initializes the view.
@@ -48,9 +51,11 @@ public class MainFrameCntl {
         view.setHeight(model.getHeight());
         view.setWidth(model.getWidth());
         view.setMainFrameCntl(this);
-        initClosePanel();
         
     }
+    /**
+     * Creates the title bar and adds it to the North of the frame.
+     */
     public void initClosePanel()
     {
         //Create a JPanel to replace the top bar.
@@ -98,6 +103,18 @@ public class MainFrameCntl {
         view.add(close, "North");
         
     }
+    public void setAuthenticationCntl(AuthenticationCntl controller)
+    {
+        theAuthenticationCntl = controller;
+    }
+    /**
+     * Returns this authentication controller
+     * @return 
+     */
+    public AuthenticationCntl getAuthenticationCntl()
+    {
+        return theAuthenticationCntl;
+    }
     /**
      * Set the title of the frame.
      * @param title String value for the new title
@@ -113,17 +130,13 @@ public class MainFrameCntl {
             this.title.setText("Cravings - "+title);
         }
     }
-    /**
-     * Initializes the splash screen.
-     * Creates the SplashView<br>
-     * Creates the SplashModel<br>
-     * Creates the SplashCntl
-     */
-    public void initCustomComponents()
+    public MainFrameView getView()
     {
-        SplashView splashScreen = new SplashView();
-        SplashModel theSplashModel = new SplashModel();
-        SplashCntl theSplashCntl = new SplashCntl(splashScreen, theSplashModel, view);
+        return view;
+    }
+    public MainFrameModel getModel()
+    {
+        return model;
     }
     /**
      * Replaces the old panel with the new panel.

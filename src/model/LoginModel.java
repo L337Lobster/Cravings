@@ -5,10 +5,107 @@
  */
 package model;
 
+import controller.LoginCntl;
+import java.awt.*;
+import javax.swing.*;
+
 /**
  *
  * @author Jackson Hofmann
  */
 public class LoginModel {
     
+    private JButton loginButton;
+    private JLabel usernameLabel, passwordLabel;
+    private JTextField usernameField;
+    private JPasswordField passwordField;
+    private LoginCntl theLoginCntl;
+    private int width, height;
+    
+    public LoginModel()
+    {
+        initModel();
+        initFonts();
+    }
+    
+    public void initModel()
+    {
+        loginButton = new JButton("Login");
+        usernameLabel = new JLabel("Username:");
+        passwordLabel = new JLabel("Password:");
+        usernameField = new JTextField();
+        passwordField = new JPasswordField();
+        passwordField.setEchoChar('*');
+    }
+    public void initFonts()
+    {
+        usernameLabel.setFont(usernameLabel.getFont().deriveFont(20.0f));
+        passwordLabel.setFont(passwordLabel.getFont().deriveFont(20.f));
+    }
+    public void initBounds()
+    {
+        usernameLabel.setBounds(new Rectangle(width/6,height/4,300,50));
+        passwordLabel.setBounds(new Rectangle(width/3,height/4,300,50));
+    }
+    public void setSizeValue(Dimension x)
+    {
+        width = x.width;
+        height = x.height;
+    }
+    public Dimension getSizeValue()
+    {
+        return new Dimension(width, height);
+    }
+    public LoginCntl getLoginCntl()
+    {
+        return theLoginCntl;
+    }
+    public void setLoginCntl(LoginCntl login)
+    {
+        theLoginCntl = login;
+    }
+    public JButton getLoginButton()
+    {
+        return loginButton;
+    }
+    public void setLoginButton(JButton button)
+    {
+        loginButton = button;
+    }
+    public JLabel getUsernameLabel()
+    {
+        return usernameLabel;
+    }
+    public void setUsernameLabel(JLabel label)
+    {
+        usernameLabel = label;
+    }
+    public JLabel getPasswordLabel()
+    {
+        return passwordLabel;
+    }
+    public void setPasswordLabel(JLabel label)
+    {
+        passwordLabel = label;
+    }
+    public JTextField getUsernameField()
+    {
+        return usernameField;
+    }
+    public void setUsernameField(JTextField field)
+    {
+        usernameField = field;
+    }
+    public JPasswordField getPasswordField()
+    {
+        return passwordField;
+    }
+    public void setPasswordField(JPasswordField field)
+    {
+        passwordField = field;
+    }
+    public void setPasswordEchoChar(char x)
+    {
+        passwordField.setEchoChar(x);
+    }
 }

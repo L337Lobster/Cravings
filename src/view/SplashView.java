@@ -46,15 +46,6 @@ public class SplashView extends JPanel{
         splashImage = image;
     }
     /**
-     * Sets the splashLabel to a new JLabel.
-     * This will set splashLabel to a new JLabel with the text label.
-     * @param label The string that will be displayed on the JLabel.
-     */
-    public void setSplashLabel(String label)
-    {
-        splashLabel = new JLabel(label);
-    }
-    /**
      * Sets the SplashLabel to an already existing JLabel.
      * @param label The pre-existing JLabel that splashLabel is being set to.
      */
