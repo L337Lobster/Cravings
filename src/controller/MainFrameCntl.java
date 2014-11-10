@@ -86,7 +86,7 @@ public class MainFrameCntl {
         
         //set the size of the X
         exit.setFont(exit.getFont().deriveFont(10.0f));
-        title.setFont(title.getFont().deriveFont(15.0f));
+        title.setFont(new java.awt.Font("Segoe UI", 0, 15));
         
         //make the button red and the text white
         exit.setBackground(new Color(199,80,80));

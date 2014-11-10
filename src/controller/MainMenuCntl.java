@@ -5,7 +5,10 @@
  */
 package controller;
 
+import cravings.ViewType;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import model.MainMenuModel;
 import view.MainFrameView;
 import view.MainMenuView;
@@ -57,6 +60,9 @@ public class MainMenuCntl {
         view.add(view.getFoodButton());
         view.add(view.getFseButton());
         view.add(view.getQuitButton());
+        
+        FoodButtonListener theFoodListener = new FoodButtonListener();
+        view.getFoodButton().addActionListener(theFoodListener);
     }
     
     public void initBounds()
@@ -65,6 +71,14 @@ public class MainMenuCntl {
         view.getFseButton().setBounds(new Rectangle(model.getSizeValue().width/2,0,model.getSizeValue().width/2,model.getSizeValue().height/2));
         view.getFindFoodButton().setBounds(new Rectangle(0,model.getSizeValue().height/2,model.getSizeValue().width/2,model.getSizeValue().height/2));
         view.getQuitButton().setBounds(new Rectangle(model.getSizeValue().width/2,model.getSizeValue().height/2,model.getSizeValue().width/2,model.getSizeValue().height/2));
+    }
+    
+    public class FoodButtonListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            frame.getMainFrameCntl().getAuthenticationCntl().showListView(ViewType.FOOD, view);
+        }
     }
     
     
