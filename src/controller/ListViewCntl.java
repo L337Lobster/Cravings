@@ -6,13 +6,14 @@
 package controller;
 
 import cravings.FSE;
+import cravings.Food;
+import cravings.FoodGenre;
+import cravings.VegFood;
 import cravings.ViewType;
+import static cravings.ViewType.FSE;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import view.CreateFoodDialogue;
@@ -89,11 +90,15 @@ public class ListViewCntl {
                             dialog = new CreateFoodDialogue();
                             dialog.getSubmit().addActionListener(theFoodListener);
                             dialog.getNewFoodName().setText(view.getCDText().getText());
-                            //dialog.setUndecorated(true);
                             ArrayList<String> listOfFse = frame.getMainFrameCntl().getAuthenticationCntl().getFseList().getStringListOfFSEs();
+                            ArrayList<String> listOfGenres = frame.getMainFrameCntl().getAuthenticationCntl().getFGList().getTheFoodGenreStringList();
                             String[] locations = listOfFse.toArray(new String[listOfFse.size()]);
+                            String[] genres = listOfGenres.toArray(new String[listOfGenres.size()]);
                             dialog.getFSEList().setModel(new DefaultComboBoxModel(locations));
+                            dialog.getGenreList().setModel(new DefaultComboBoxModel(genres));
                             dialog.setVisible(true);
+                            dialog.setLocationRelativeTo(null);
+                            dialog.requestFocus();
                         }
                     });
                     //newFood.setUndecorated(true);
@@ -111,6 +116,32 @@ public class ListViewCntl {
         @Override
         public void actionPerformed(ActionEvent e)
         {
+            //if()
+            FSE newFSE;
+            FoodGenre newGenre;
+            Food newFood = null;
+            AuthenticationCntl tempAuth = frame.getMainFrameCntl().getAuthenticationCntl();
+            String name = dialog.getNewFoodName().getText();
+            System.out.println("Name: "+name);
+            String genre = dialog.getGenreList().getSelectedItem().toString();
+            System.out.println("Genre: " + genre);
+            String location = dialog.getFSEList().getSelectedItem().toString();
+            System.out.println("Location: " + location);
+            newFSE = new FSE(location);
+            newGenre = new FoodGenre(genre);
+            if(dialog.getNeitherRadio().isSelected())
+            {
+                newFood = new Food(name, newFSE, newGenre);
+            }
+            if(dialog.getVeganRadio().isSelected())
+            {
+                newFood = new VegFood(name, newFSE, newGenre, true, false);
+            }
+            if(dialog.getVegitRadio().isSelected())
+            {
+                newFood = new VegFood(name, newFSE, newGenre, false, true);
+            }
+            tempAuth.getFoodList().getTheFoodList().add(newFood);
             dialog.dispose();
         }
     }

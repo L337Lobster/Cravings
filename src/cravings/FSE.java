@@ -12,16 +12,48 @@ package cravings;
 public class FSE {
     
     private String name;
-    private String address;
-    private int[] openHour;
-    private int[] closeHour;
+    private FSEAddress address;
+    private int[] openHour = new int[7];
+    private int[] closeHour = new int[7];
     
-    public FSE(String name, String address, int[] open, int[] close)
+    public FSE(String name, FSEAddress address, int[] open, int[] close)
     {
         this.name = name;
         this.address = address;
         openHour = open;
         closeHour = close;
+    }
+    public FSE(String name)
+    {
+        this.name = name;
+        address = new FSEAddress();
+        for(int i = 0; i < 7; i++)
+        {
+            openHour[i] = 0;
+            closeHour[i] = 0;
+        }
+    }
+    @Override
+    public boolean equals(Object o)
+    {
+        boolean isEqual = false;
+        if(o != null && o instanceof FSE)
+        {
+            FSE temp = (FSE) o;
+            if(temp.name.equals(this.name) && temp.address.equals(this.address) && temp.openHour == this.openHour && temp.closeHour == this.closeHour)
+            {
+                isEqual = true;
+            }
+        }
+        else if(o != null && o instanceof String)
+        {
+            String temp = (String) o;
+            if(temp.equals(this.name))
+            {
+                isEqual = true;
+            }
+        }
+        return isEqual;
     }
     @Override
     public String toString()
@@ -36,11 +68,11 @@ public class FSE {
     {
         this.name = name;
     }
-    public String getAddress()
+    public FSEAddress getAddress()
     {
         return address;
     }
-    public void setAddress(String address)
+    public void FSEAddress(FSEAddress address)
     {
         this.address = address;
     }

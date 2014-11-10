@@ -24,7 +24,7 @@ public class FseList implements Serializable{
         {
             int[] open = {0, 1, 2, 3, 4, 5, 6};
             int[] close = {0, 1, 2, 3, 4, 5, 6};
-            String address = i + " University Park";
+            FSEAddress address = new FSEAddress();
             String name = "FSE"+i;
             FSE tempFse = new FSE(name,address, open, close);
             theFseList.add(tempFse);

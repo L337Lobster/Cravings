@@ -6,10 +6,7 @@
 
 package controller;
 
-import cravings.FseList;
-import cravings.User;
-import cravings.UserList;
-import cravings.ViewType;
+import cravings.*;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -28,19 +25,24 @@ public class AuthenticationCntl {
     private MainMenuView theMainMenuView;
     private ListView theListView;
     private FseList theFseList;
+    private FoodList theFoodList;
+    private FoodGenreList theFoodGenreList;
     private final Dimension defaultDimension = new Dimension(600,800);
     
     public AuthenticationCntl()
     {
         theUserList = new UserList();
+        theFoodList = new FoodList();
         theFseList = new FseList();
+        theFoodGenreList = new FoodGenreList();
         createMainFrame();
         showSplashUI();
     }
     
     public void showListView(ViewType listType, JPanel panel)
     {
-        theListView = new ListView(null, listType);
+        FoodTableModel theFoodTableModel = new FoodTableModel(theFoodList.getTheFoodList());
+        theListView = new ListView(theFoodTableModel, listType);
         ListViewCntl theListViewCntl = new ListViewCntl(theListView, theMainFrameView);
         theMainFrameView.getMainFrameCntl().replacePanel(panel, theListView);
     }
@@ -91,6 +93,10 @@ public class AuthenticationCntl {
     {
         return theLoginView;
     }
+    public FoodGenreList getFGList()
+    {
+        return theFoodGenreList;
+    }
     public FseList getFseList()
     {
         return theFseList;
@@ -100,6 +106,10 @@ public class AuthenticationCntl {
      */
     public UserList getUserList(){
         return theUserList;
+    }
+    public FoodList getFoodList()
+    {
+        return theFoodList;
     }
     
     

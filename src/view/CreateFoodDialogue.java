@@ -5,9 +5,11 @@
  */
 package view;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 
 /**
  *
@@ -19,6 +21,7 @@ public class CreateFoodDialogue extends javax.swing.JDialog {
      * Creates new form CreateDialogue
      */
     public CreateFoodDialogue() {
+        this.setUndecorated(true);
         initComponents();
     }
     public JLabel getNewFoodName()
@@ -32,6 +35,26 @@ public class CreateFoodDialogue extends javax.swing.JDialog {
     public JComboBox getFSEList()
     {
         return this.LocationSelection;
+    }
+    public JComboBox getGenreList()
+    {
+        return this.foodGenreList;
+    }
+    public ButtonGroup getVegLevel()
+    {
+        return this.VegLevel;
+    }
+    public JRadioButton getNeitherRadio()
+    {
+        return this.neitherRadio;
+    }
+    public JRadioButton getVeganRadio()
+    {
+        return this.veganRadio;
+    }
+    public JRadioButton getVegitRadio()
+    {
+        return this.vegitarianRadio;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,7 +71,7 @@ public class CreateFoodDialogue extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         veganRadio = new javax.swing.JRadioButton();
         vegitarianRadio = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        neitherRadio = new javax.swing.JRadioButton();
         FoodGenreLabel = new javax.swing.JLabel();
         foodGenreList = new javax.swing.JComboBox();
         foodLocationLabel = new javax.swing.JLabel();
@@ -98,13 +121,13 @@ public class CreateFoodDialogue extends javax.swing.JDialog {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         jPanel1.add(vegitarianRadio, gridBagConstraints);
 
-        VegLevel.add(jRadioButton1);
-        jRadioButton1.setText("Neither");
+        VegLevel.add(neitherRadio);
+        neitherRadio.setText("Neither");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        jPanel1.add(jRadioButton1, gridBagConstraints);
+        jPanel1.add(neitherRadio, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -185,7 +208,7 @@ public class CreateFoodDialogue extends javax.swing.JDialog {
     private javax.swing.JComboBox foodGenreList;
     private javax.swing.JLabel foodLocationLabel;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton neitherRadio;
     private javax.swing.JLabel newFoodName;
     private javax.swing.JButton submit;
     private javax.swing.JRadioButton veganRadio;

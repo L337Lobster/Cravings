@@ -7,19 +7,18 @@ package view;
 
 import controller.ListViewCntl;
 import cravings.ViewType;
-import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.table.AbstractTableModel;
+import model.FoodTableModel;
 /**
  * 
  * @author Jackson Hofmann
  */
 public class ListView extends javax.swing.JPanel {
     
-    private AbstractTableModel theTableModel;
+    private FoodTableModel theTableModel;
     private ViewType theListType;
     private ListViewCntl theListViewCntl;
 
@@ -28,10 +27,14 @@ public class ListView extends javax.swing.JPanel {
      * @param myTableModel The table model that will be used for the read table
      * @param listType The type of list as a {@link cravings.ViewType}, either "food" or "fse".
      */
-    public ListView(AbstractTableModel myTableModel, ViewType listType) {
+    public ListView(FoodTableModel myTableModel, ViewType listType) {
         theTableModel = myTableModel;
         theListType = listType;
         initComponents();
+    }
+    public FoodTableModel getTableModel()
+    {
+        return this.theTableModel;
     }
     public JLabel getCDLabel()
     {
@@ -140,16 +143,7 @@ public class ListView extends javax.swing.JPanel {
         readPane.setMinimumSize(new java.awt.Dimension(550, 300));
         readPane.setPreferredSize(new java.awt.Dimension(550, 300));
 
-        viewReadData.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3"
-            }
-        ));
+        viewReadData.setModel(this.theTableModel);
         viewReadData.setFillsViewportHeight(true);
         readPane.setViewportView(viewReadData);
 
