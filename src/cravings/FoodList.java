@@ -5,13 +5,14 @@
  */
 package cravings;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Jackson Hofmann
  */
-public class FoodList {
+public class FoodList implements Serializable{
     
     private ArrayList<Food> theFoodList;
     private ArrayList<String> theFoodStringList;
@@ -20,14 +21,6 @@ public class FoodList {
     {
         theFoodList = new ArrayList();
         theFoodStringList = new ArrayList();
-        for(int i =0; i <100; i++)
-        {
-            FSE tempFSE = new FSE("FSE"+i);
-            FoodGenre tempGenre = new FoodGenre("Genre"+i);
-            Food temp = new Food("Food"+i, tempFSE, tempGenre);
-            theFoodList.add(temp);
-            theFoodStringList.add(temp.toString());
-        }
     }
     /**
      * @return the theFoodList

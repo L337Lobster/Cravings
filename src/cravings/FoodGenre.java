@@ -5,24 +5,38 @@
  */
 package cravings;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Jackson Hofmann
  */
-public class FoodGenre {
+public class FoodGenre implements Serializable{
     
     private String name;
+    private int code;
     private String description;
-    
-    public FoodGenre(String name, String desc)
+    public FoodGenre(int code, String name, String desc)
     {
+        this.code = code;
         this.name = name;
         description = desc;
     }
-    public FoodGenre(String name)
+    public FoodGenre(int code, String name)
     {
+        this.code = code;
         this.name = name;
         description = "";
+    }
+    public FoodGenre(String importString){
+        String delimiter = "~";
+        String[] tokens = importString.split(delimiter);
+        code =  Integer.parseInt(tokens[1]); // From the file format at the FDA site position 1 is the code.
+        description = tokens[3]; // From the file format at the FDA site position 3 is the description.
+    }
+    public int getCode()
+    {
+        return code;
     }
     @Override
     public boolean equals(Object o)
@@ -31,7 +45,7 @@ public class FoodGenre {
         if(o != null && o instanceof FoodGenre)
         {
             FoodGenre temp = (FoodGenre) o;
-            if(temp.name.equals(this.name) && temp.description.equals(this.description))
+            if(temp.getCode() == this.getCode())
             {
                 isEqual = true;
             }

@@ -5,13 +5,14 @@
  */
 package cravings;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Jackson Hofmann
  */
-public class FoodGenreList {
+public class FoodGenreList implements Serializable{
     
     private static ArrayList<FoodGenre> theFoodGenreList;
     private static ArrayList<String> theFoodGenreStringList;
@@ -20,14 +21,32 @@ public class FoodGenreList {
     {
         theFoodGenreList = new ArrayList();
         theFoodGenreStringList = new ArrayList();
-        for(int i = 0; i < 10; i++)
-        {
-            FoodGenre temp = new FoodGenre("Genre"+i, "Description"+i);
-            theFoodGenreList.add(temp);
-            theFoodGenreStringList.add(temp.toString());
-        }
     }
-
+    public int getNextCode()
+    {
+        int temp = 0;
+        for(int i = 0; i < theFoodGenreList.size(); i++)
+        {
+            if(theFoodGenreList.get(i).getCode() > temp)
+            {
+                temp = theFoodGenreList.get(i).getCode();
+            }
+        }
+        temp+=1;
+        return temp;
+    }
+    public FoodGenre getGenreByCode(int code)
+    {
+        FoodGenre temp = null;
+        for(int i = 0; i < theFoodGenreList.size(); i++)
+        {
+            if(theFoodGenreList.get(i).getCode() == code)
+            {
+                temp = theFoodGenreList.get(i);
+            }
+        }
+        return temp;
+    }
     /**
      * @return the theFoodGenreList
      */

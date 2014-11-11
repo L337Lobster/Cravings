@@ -5,7 +5,9 @@
  */
 package model;
 
+import controller.AuthenticationCntl;
 import cravings.Food;
+import cravings.FoodGenre;
 import cravings.VegFood;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
@@ -18,13 +20,15 @@ public class FoodTableModel extends AbstractTableModel{
     
     private ArrayList<Food> theData = new ArrayList();
     private String[] theColumns = new String[]{"Name", "Genre", "VegLevel", "Location"}; 
+    private AuthenticationCntl theAuthenticationCntl;
     
     public FoodTableModel()
     {
         
     }
-    public FoodTableModel(ArrayList<Food> theFoodList)
+    public FoodTableModel(ArrayList<Food> theFoodList, AuthenticationCntl auth)
     {
+        theAuthenticationCntl = auth;
         theData = theFoodList;
     }
     public void addFood(Food theFood)
@@ -68,7 +72,10 @@ public class FoodTableModel extends AbstractTableModel{
             case 0:
                 return theFood.getFoodName();
             case 1:
-                return theFood.getFoodGenre().getName();
+                FoodGenre temp = theAuthenticationCntl.getFGList().getGenreByCode(theFood.getFoodGenreCode());
+                String tempName = temp.getName();
+                System.err.println(temp);
+                return tempName;
             case 2:
                 if(theFood instanceof VegFood)
                 {
@@ -84,7 +91,7 @@ public class FoodTableModel extends AbstractTableModel{
                 }
                 return "Neither";
             case 3:
-                return theFood.getFSE().getName();
+                return "FSE";//theFood.getFSE().getName();
         }
         return null;
     }

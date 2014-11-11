@@ -26,6 +26,14 @@ public enum ViewType {
         {
             return "fse";
         }
+    },
+    FOOD_GENRE
+    {
+        @Override
+        public String toString()
+        {
+            return "Food Genre";
+        }
     }
     
 }

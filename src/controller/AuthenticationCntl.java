@@ -9,6 +9,8 @@ package controller;
 import cravings.*;
 import java.awt.Dimension;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import javax.swing.JPanel;
 import model.*;
 import view.*;
@@ -27,21 +29,23 @@ public class AuthenticationCntl {
     private FseList theFseList;
     private FoodList theFoodList;
     private FoodGenreList theFoodGenreList;
+    ExternalDataCntl theExternalDataCntl;
     private final Dimension defaultDimension = new Dimension(600,800);
     
     public AuthenticationCntl()
     {
         theUserList = new UserList();
-        theFoodList = new FoodList();
         theFseList = new FseList();
-        theFoodGenreList = new FoodGenreList();
+        theExternalDataCntl = new ExternalDataCntl();
+        theFoodList = theExternalDataCntl.getTheFoodList();
+        theFoodGenreList = theExternalDataCntl.getTheFoodGenreList();
         createMainFrame();
         showSplashUI();
     }
     
     public void showListView(ViewType listType, JPanel panel)
     {
-        FoodTableModel theFoodTableModel = new FoodTableModel(theFoodList.getTheFoodList());
+        FoodTableModel theFoodTableModel = new FoodTableModel(theFoodList.getTheFoodList(), this);
         theListView = new ListView(theFoodTableModel, listType);
         ListViewCntl theListViewCntl = new ListViewCntl(theListView, theMainFrameView);
         theMainFrameView.getMainFrameCntl().replacePanel(panel, theListView);

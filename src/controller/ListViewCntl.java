@@ -8,6 +8,7 @@ package controller;
 import cravings.FSE;
 import cravings.Food;
 import cravings.FoodGenre;
+import cravings.FoodGenreList;
 import cravings.VegFood;
 import cravings.ViewType;
 import static cravings.ViewType.FSE;
@@ -119,6 +120,7 @@ public class ListViewCntl {
             //if()
             FSE newFSE;
             FoodGenre newGenre;
+            FoodGenreList theFGList = frame.getMainFrameCntl().getAuthenticationCntl().getFGList();
             Food newFood = null;
             AuthenticationCntl tempAuth = frame.getMainFrameCntl().getAuthenticationCntl();
             String name = dialog.getNewFoodName().getText();
@@ -128,18 +130,34 @@ public class ListViewCntl {
             String location = dialog.getFSEList().getSelectedItem().toString();
             System.out.println("Location: " + location);
             newFSE = new FSE(location);
-            newGenre = new FoodGenre(genre);
+            int genreCode = theFGList.getNextCode();
+            if(!theFGList.getTheFoodGenreList().contains(genre))
+            {
+                newGenre = new FoodGenre(genreCode, genre);
+                theFGList.getTheFoodGenreList().add(newGenre);
+            }
+            else
+            {
+                for(int i = 0; i < theFGList.getTheFoodGenreList().size(); i++)
+                {
+                    if(theFGList.getTheFoodGenreList().get(i).equals(genre))
+                    {
+                        newGenre = theFGList.getTheFoodGenreList().get(i);
+                    }
+                }
+            }
+            
             if(dialog.getNeitherRadio().isSelected())
             {
-                newFood = new Food(name, newFSE, newGenre);
+                newFood = new Food(name, newFSE, genreCode);
             }
             if(dialog.getVeganRadio().isSelected())
             {
-                newFood = new VegFood(name, newFSE, newGenre, true, false);
+                newFood = new VegFood(name, newFSE, genreCode, true, false);
             }
             if(dialog.getVegitRadio().isSelected())
             {
-                newFood = new VegFood(name, newFSE, newGenre, false, true);
+                newFood = new VegFood(name, newFSE, genreCode, false, true);
             }
             tempAuth.getFoodList().getTheFoodList().add(newFood);
             dialog.dispose();

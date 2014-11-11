@@ -5,43 +5,49 @@
  */
 package cravings;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Jackson Hofmann
  */
-public class Food {
+public class Food implements Serializable{
     
+    private int code;
     private String foodName;
-    private int calories;
     private FSE theFSE;
-    private FoodGenre theFoodGenre;
+    private int theFoodGenreCode;
     
-    public Food(String name, int calories, FSE location, FoodGenre genre)
+    public Food(String name, FSE location, int genreCode)
     {
-        theFoodGenre = genre;
-        foodName = name;
-        this.calories = calories;
+        theFoodGenreCode = genreCode;
         theFSE = location;
+        foodName = name;
     }
-    public Food(String name, FSE location, FoodGenre genre)
+    public Food(String importString)
     {
-        foodName = name;
-        theFSE = location;
-        theFoodGenre = genre;
-        calories = 9001;
+        String delimiter = "~";
+        String[] tokens = importString.split(delimiter);
+        code = Integer.parseInt(tokens[1]);
+        theFoodGenreCode = Integer.parseInt(tokens[3]);
+        foodName = tokens[5];
+    }
+    public int getCode()
+    {
+        return code;
     }
     @Override
     public String toString()
     {
         return foodName;
     }
-    public FoodGenre getFoodGenre()
+    public int getFoodGenreCode()
     {
-        return theFoodGenre;
+        return theFoodGenreCode;
     }
-    public void setFoodGenre(FoodGenre genre)
+    public void setFoodGenreCode(int genreCode)
     {
-        theFoodGenre = genre;
+        theFoodGenreCode = genreCode;
     }
     public String getFoodName()
     {
@@ -51,16 +57,6 @@ public class Food {
     public void setFoodName(String name)
     {
         foodName = name;
-    }
-    
-    public int getCalories()
-    {
-        return calories;
-    }
-    
-    public void setCalories(int number)
-    {
-        calories = number;
     }
     public void setFSE(FSE newFse)
     {
