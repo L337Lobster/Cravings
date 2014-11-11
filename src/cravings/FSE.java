@@ -5,11 +5,13 @@
  */
 package cravings;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Jackson Hofmann
  */
-public class FSE {
+public class FSE implements Serializable{
     private int code;
     private String name;
     private FSEAddress address;

@@ -39,6 +39,10 @@ public class AuthenticationCntl {
         theExternalDataCntl = new ExternalDataCntl();
         theFoodList = theExternalDataCntl.getTheFoodList();
         theFoodGenreList = theExternalDataCntl.getTheFoodGenreList();
+        for(int i = 0; i < theFoodGenreList.getTheFoodGenreList().size(); i++)
+        {
+            theFoodGenreList.getTheFoodGenreStringList().add(theFoodGenreList.getTheFoodGenreList().get(i).toString());
+        }
         createMainFrame();
         showSplashUI();
     }

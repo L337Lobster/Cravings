@@ -84,9 +84,9 @@ public class CreateFoodDialogue extends javax.swing.JDialog {
         submit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(400, 200));
-        setMinimumSize(new java.awt.Dimension(400, 200));
-        setPreferredSize(new java.awt.Dimension(400, 200));
+        setMaximumSize(new java.awt.Dimension(500, 200));
+        setMinimumSize(new java.awt.Dimension(500, 200));
+        setPreferredSize(new java.awt.Dimension(500, 200));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         newFoodName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N

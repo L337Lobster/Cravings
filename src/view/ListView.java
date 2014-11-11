@@ -76,6 +76,7 @@ public class ListView extends javax.swing.JPanel {
 
         titlePanel = new javax.swing.JPanel();
         viewTitle = new javax.swing.JLabel();
+        mainMenu = new javax.swing.JButton();
         readPane = new javax.swing.JScrollPane();
         viewReadData = new javax.swing.JTable();
         createDeletePanel = new javax.swing.JPanel();
@@ -124,14 +125,23 @@ public class ListView extends javax.swing.JPanel {
         viewTitle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         viewTitle.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         viewTitle.setText("Title");
-        viewTitle.setMaximumSize(new java.awt.Dimension(550, 29));
-        viewTitle.setMinimumSize(new java.awt.Dimension(550, 29));
-        viewTitle.setPreferredSize(new java.awt.Dimension(550, 29));
+        viewTitle.setMaximumSize(new java.awt.Dimension(400, 29));
+        viewTitle.setMinimumSize(new java.awt.Dimension(400, 29));
+        viewTitle.setPreferredSize(new java.awt.Dimension(400, 29));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         titlePanel.add(viewTitle, gridBagConstraints);
+
+        mainMenu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        mainMenu.setText("Main Menu");
+        mainMenu.setMaximumSize(new java.awt.Dimension(150, 29));
+        mainMenu.setMinimumSize(new java.awt.Dimension(150, 29));
+        mainMenu.setPreferredSize(new java.awt.Dimension(150, 29));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        titlePanel.add(mainMenu, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -398,6 +408,7 @@ public class ListView extends javax.swing.JPanel {
     private javax.swing.Box.Filler leftStrut;
     private javax.swing.Box.Filler leftStrutCD;
     private javax.swing.Box.Filler leftStrutUpdate;
+    private javax.swing.JButton mainMenu;
     private javax.swing.JTextField newValue;
     private javax.swing.JLabel newValueLabel;
     private javax.swing.JTextField oldValue;
@@ -417,4 +428,11 @@ public class ListView extends javax.swing.JPanel {
     private javax.swing.JTable viewReadData;
     private javax.swing.JLabel viewTitle;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the mainMenu
+     */
+    public javax.swing.JButton getMainMenu() {
+        return mainMenu;
+    }
 }

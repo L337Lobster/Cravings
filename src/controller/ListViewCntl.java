@@ -57,7 +57,9 @@ public class ListViewCntl {
             view.getCDLabel().setText("Default");
         }
         CDListener theCDListener = new CDListener();
+        MainMenuButtonListener backListener = new MainMenuButtonListener();
         UpdateListener theUpdateListener = new UpdateListener();
+        view.getMainMenu().addActionListener(backListener);
         view.getCDButton().addActionListener(theCDListener);
         view.getUpdateButton().addActionListener(theUpdateListener);
         
@@ -110,7 +112,14 @@ public class ListViewCntl {
             }
         }
     }
-    
+    public class MainMenuButtonListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            frame.getMainFrameCntl().getAuthenticationCntl().showMainMenuUI(view);
+        }
+    }
     public class FoodPopupListener implements ActionListener
     {
         @Override

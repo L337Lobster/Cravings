@@ -32,6 +32,14 @@ public class ExternalDataCntl {
         if(confirmImport()){
             getExternalFood();
         }
+        else
+        {
+            SerializedDataCntl.getSerializedDataCntl().readSerializedDataModel();
+             SerializedDataCntl.getSerializedDataCntl().testPrintSerializedDataModel(ViewType.FOOD);
+             SerializedDataCntl.getSerializedDataCntl().testPrintSerializedDataModel(ViewType.FOOD_GENRE);
+            theFoodList =  SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTheFoodList();
+            theFoodGenreList =  SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getFoodGenreList();
+        }
     }
     public void getExternalFood(){
         getFoodGenre();
@@ -49,7 +57,7 @@ public class ExternalDataCntl {
         
             while(in.hasNextLine()){
                 nextLine = in.nextLine();
-               // System.out.println(nextLine);
+                System.out.println(nextLine);
                 FoodGenre tmpFoodGenre = new FoodGenre(nextLine);
                 SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getFoodGenreList().getTheFoodGenreList().add(tmpFoodGenre);
             }
@@ -97,7 +105,7 @@ public class ExternalDataCntl {
     
     public boolean confirmImport(){
             boolean importConfirmed = false;
-            String message = "Are you sure you want to import foods?";
+            String message = "Are you sure you want to import foods from text file?";
             String title = "Import Foods";
             // display the JOptionPane showConfirmDialog
             int result = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);

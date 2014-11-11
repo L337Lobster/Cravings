@@ -5,12 +5,14 @@
  */
 package cravings;
 
+import java.io.Serializable;
+
 
 /**
  *
  * @author Jackson Hofmann
  */
-public class FSEAddress{
+public class FSEAddress implements Serializable{
     
     private String city, street;
     private char[] state = new char[2];

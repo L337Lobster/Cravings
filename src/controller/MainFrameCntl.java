@@ -8,6 +8,7 @@ package controller;
 import java.awt.*;
 import java.awt.event.*;
 import model.MainFrameModel;
+import controller.SerializedDataCntl;
 import javax.swing.*;
 import model.SplashModel;
 import view.MainFrameView;
@@ -188,6 +189,11 @@ public class MainFrameCntl {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
+            view.dispose();
+            System.out.println("Writing Data, please wait!");
+            SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().setFoodGenreList(view.getMainFrameCntl().getAuthenticationCntl().getFGList());
+            SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().setTheFoodList(view.getMainFrameCntl().getAuthenticationCntl().getFoodList());
+            SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
             view.dispatchEvent(new WindowEvent(view, WindowEvent.WINDOW_CLOSING));
         }
         
