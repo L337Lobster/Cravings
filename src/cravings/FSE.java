@@ -10,21 +10,22 @@ package cravings;
  * @author Jackson Hofmann
  */
 public class FSE {
-    
+    private int code;
     private String name;
     private FSEAddress address;
     private int[] openHour = new int[7];
     private int[] closeHour = new int[7];
     
-    public FSE(String name, FSEAddress address, int[] open, int[] close)
+    public FSE(int code, String name, FSEAddress address, int[] open, int[] close)
     {
         this.name = name;
         this.address = address;
         openHour = open;
         closeHour = close;
     }
-    public FSE(String name)
+    public FSE(int code, String name)
     {
+        this.code = code;
         this.name = name;
         address = new FSEAddress();
         for(int i = 0; i < 7; i++)
@@ -100,5 +101,19 @@ public class FSE {
     public void setCloseHours(DayOfTheWeek day, int hour)
     {
         this.closeHour[day.toInt()] = hour;
+    }
+
+    /**
+     * @return the code
+     */
+    public int getCode() {
+        return code;
+    }
+
+    /**
+     * @param code the code to set
+     */
+    public void setCode(int code) {
+        this.code = code;
     }
 }

@@ -102,7 +102,6 @@ public class ListViewCntl {
                             dialog.requestFocus();
                         }
                     });
-                    //newFood.setUndecorated(true);
                     
                     break;
                 case 2: //delete
@@ -129,7 +128,8 @@ public class ListViewCntl {
             System.out.println("Genre: " + genre);
             String location = dialog.getFSEList().getSelectedItem().toString();
             System.out.println("Location: " + location);
-            newFSE = new FSE(location);
+            int code = frame.getMainFrameCntl().getAuthenticationCntl().getFseList().getNextCode();
+            newFSE = new FSE(code, location);
             int genreCode = theFGList.getNextCode();
             if(!theFGList.getTheFoodGenreList().contains(genre))
             {

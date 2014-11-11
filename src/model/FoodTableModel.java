@@ -90,7 +90,7 @@ public class FoodTableModel extends AbstractTableModel{
                 }
                 return "Neither";
             case 3:
-                return theFood.getFSE().getName();//theFood.getFSE().getName();
+                return "FSE";//theFood.getFSE().getName();
         }
         return null;
     }

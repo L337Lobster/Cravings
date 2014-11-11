@@ -26,13 +26,26 @@ public class FseList implements Serializable{
             int[] close = {0, 1, 2, 3, 4, 5, 6};
             FSEAddress address = new FSEAddress();
             String name = "FSE"+i;
-            FSE tempFse = new FSE(name,address, open, close);
+            FSE tempFse = new FSE(i, name,address, open, close);
             theFseList.add(tempFse);
         }
         for(int i =0; i < theFseList.size(); i++)
         {
             theFseStringList.add(theFseList.get(i).toString());
         }
+    }
+        public int getNextCode()
+    {
+        int temp = 0;
+        for(int i = 0; i < theFseList.size(); i++)
+        {
+            if(theFseList.get(i).getCode() > temp)
+            {
+                temp = theFseList.get(i).getCode();
+            }
+        }
+        temp+=1;
+        return temp;
     }
     public ArrayList<String> getStringListOfFSEs()
     {

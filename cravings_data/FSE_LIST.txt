@@ -1,0 +1,25 @@
+~0100~^~Dennys~
+~0200~^~TGIF~
+~0300~^~Ruby Tuesdays~
+~0400~^~Fudruckers~
+~0500~^~Food Cart 1~
+~0600~^~Derp Cart 2~
+~0700~^~McDonalds~
+~0800~^~Burger King~
+~0900~^~Wendys~
+~1000~^~Red Robin~
+~1100~^~Jack in the Box~
+~1200~^~Arbys~
+~1300~^~Hardys~
+~1400~^~Chick Fila~
+~1500~^~Subway~
+~1600~^~Jimmy Johns~
+~1700~^~Dominos~
+~1800~^~Papa Johns~
+~1900~^~Pizza Hut~
+~2000~^~Outback Steakhouse~
+~2100~^~Carabas~
+~2200~^~Mom and Pop Diner 2097~
+~2500~^~Round the Clock Diner~
+~3500~^~Old Country Buffet~
+~3600~^~Microsoft~
