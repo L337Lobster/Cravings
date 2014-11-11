@@ -144,6 +144,8 @@ public class ListView extends javax.swing.JPanel {
         readPane.setPreferredSize(new java.awt.Dimension(550, 300));
 
         viewReadData.setModel(this.theTableModel);
+        viewReadData.setCellSelectionEnabled(true);
+        viewReadData.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         viewReadData.setFillsViewportHeight(true);
         readPane.setViewportView(viewReadData);
 

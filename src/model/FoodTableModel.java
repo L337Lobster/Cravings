@@ -74,7 +74,6 @@ public class FoodTableModel extends AbstractTableModel{
             case 1:
                 FoodGenre temp = theAuthenticationCntl.getFGList().getGenreByCode(theFood.getFoodGenreCode());
                 String tempName = temp.getName();
-                System.err.println(temp);
                 return tempName;
             case 2:
                 if(theFood instanceof VegFood)
@@ -91,7 +90,7 @@ public class FoodTableModel extends AbstractTableModel{
                 }
                 return "Neither";
             case 3:
-                return "FSE";//theFood.getFSE().getName();
+                return theFood.getFSE().getName();//theFood.getFSE().getName();
         }
         return null;
     }

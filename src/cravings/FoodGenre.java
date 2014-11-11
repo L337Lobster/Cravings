@@ -32,7 +32,8 @@ public class FoodGenre implements Serializable{
         String delimiter = "~";
         String[] tokens = importString.split(delimiter);
         code =  Integer.parseInt(tokens[1]); // From the file format at the FDA site position 1 is the code.
-        description = tokens[3]; // From the file format at the FDA site position 3 is the description.
+        name = tokens[3]; // From the file format at the FDA site position 3 is the description.
+        description = "";
     }
     public int getCode()
     {

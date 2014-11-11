@@ -32,6 +32,10 @@ public class Food implements Serializable{
         theFoodGenreCode = Integer.parseInt(tokens[3]);
         foodName = tokens[5];
     }
+    public FSE getFSE()
+    {
+        return theFSE;
+    }
     public int getCode()
     {
         return code;
@@ -61,10 +65,6 @@ public class Food implements Serializable{
     public void setFSE(FSE newFse)
     {
         theFSE = newFse;
-    }
-    public FSE getFSE()
-    {
-        return theFSE;
     }
     
 }

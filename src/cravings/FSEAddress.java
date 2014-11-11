@@ -38,6 +38,10 @@ public class FSEAddress{
     {
         return houseNum + " " + street + ", " + city + ", " + state + " " + zipCode;
     }
+    public String getShortValue()
+    {
+        return houseNum + " " + street;
+    }
     /**
      * @return the city
      */

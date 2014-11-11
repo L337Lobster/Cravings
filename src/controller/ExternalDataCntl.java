@@ -64,7 +64,7 @@ public class ExternalDataCntl {
         // Read it back in.
         SerializedDataCntl.getSerializedDataCntl().readSerializedDataModel();
         // Test print to see if it worked.
-        SerializedDataCntl.getSerializedDataCntl().testPrintSerializedDataModel(ViewType.FOOD_GENRE);
+        //SerializedDataCntl.getSerializedDataCntl().testPrintSerializedDataModel(ViewType.FOOD_GENRE);
         
     }
     public void getFood(){
@@ -91,7 +91,7 @@ public class ExternalDataCntl {
         // Read it back in.
         SerializedDataCntl.getSerializedDataCntl().readSerializedDataModel();
         // Test print to see if it worked.
-        SerializedDataCntl.getSerializedDataCntl().testPrintSerializedDataModel(ViewType.FOOD);
+        //SerializedDataCntl.getSerializedDataCntl().testPrintSerializedDataModel(ViewType.FOOD);
         
     }
     
