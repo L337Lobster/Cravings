@@ -19,7 +19,7 @@ import javax.swing.table.AbstractTableModel;
 public class FoodTableModel extends AbstractTableModel{
     
     private ArrayList<Food> theData = new ArrayList();
-    private String[] theColumns = new String[]{"Code", "Name", "Genre", "VegLevel"}; 
+    private String[] theColumns = new String[]{"Food ID", "Name", "Genre", "VegLevel"}; 
     private AuthenticationCntl theAuthenticationCntl;
     
     public FoodTableModel()

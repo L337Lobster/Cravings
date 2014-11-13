@@ -154,7 +154,6 @@ public class ListView extends javax.swing.JPanel {
         readPane.setPreferredSize(new java.awt.Dimension(550, 300));
 
         viewReadData.setModel(this.theTableModel);
-        viewReadData.setCellSelectionEnabled(true);
         viewReadData.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         viewReadData.setFillsViewportHeight(true);
         readPane.setViewportView(viewReadData);
@@ -253,7 +252,7 @@ public class ListView extends javax.swing.JPanel {
 
         typeLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         typeLabel.setLabelFor(oldValue);
-        typeLabel.setText("Old Value:");
+        typeLabel.setText("Food ID:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -299,7 +298,7 @@ public class ListView extends javax.swing.JPanel {
         updatePanel.add(newValue, gridBagConstraints);
 
         fieldToUpdate.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        fieldToUpdate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Name", "Type", "Location" }));
+        fieldToUpdate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Name", "Type", "Description" }));
         fieldToUpdate.setMinimumSize(new java.awt.Dimension(158, 20));
         fieldToUpdate.setPreferredSize(new java.awt.Dimension(158, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
