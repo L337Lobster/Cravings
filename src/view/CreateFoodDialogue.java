@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -32,9 +33,9 @@ public class CreateFoodDialogue extends javax.swing.JDialog {
     {
         return this.submit;
     }
-    public JComboBox getFSEList()
+    public JTextArea getDescription()
     {
-        return this.LocationSelection;
+        return this.foodDescription;
     }
     public JComboBox getGenreList()
     {
@@ -74,18 +75,19 @@ public class CreateFoodDialogue extends javax.swing.JDialog {
         neitherRadio = new javax.swing.JRadioButton();
         FoodGenreLabel = new javax.swing.JLabel();
         foodGenreList = new javax.swing.JComboBox();
-        foodLocationLabel = new javax.swing.JLabel();
-        LocationSelection = new javax.swing.JComboBox();
+        foodDesLabel = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 34), new java.awt.Dimension(0, 34), new java.awt.Dimension(32767, 46));
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 33), new java.awt.Dimension(0, 33), new java.awt.Dimension(32767, 46));
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 33), new java.awt.Dimension(0, 33), new java.awt.Dimension(32767, 46));
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 34), new java.awt.Dimension(0, 34), new java.awt.Dimension(32767, 34));
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(25, 0), new java.awt.Dimension(25, 0), new java.awt.Dimension(25, 32767));
         submit = new javax.swing.JButton();
+        foodDescription = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(500, 200));
         setMinimumSize(new java.awt.Dimension(500, 200));
+        setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(500, 200));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
@@ -150,21 +152,14 @@ public class CreateFoodDialogue extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         getContentPane().add(foodGenreList, gridBagConstraints);
 
-        foodLocationLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        foodLocationLabel.setText("Location:");
+        foodDesLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        foodDesLabel.setText("Descripton:");
+        foodDesLabel.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        getContentPane().add(foodLocationLabel, gridBagConstraints);
-
-        LocationSelection.setEditable(true);
-        LocationSelection.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "LocationList" }));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        getContentPane().add(LocationSelection, gridBagConstraints);
+        getContentPane().add(foodDesLabel, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -192,21 +187,33 @@ public class CreateFoodDialogue extends javax.swing.JDialog {
         gridBagConstraints.gridy = 7;
         getContentPane().add(submit, gridBagConstraints);
 
+        foodDescription.setColumns(20);
+        foodDescription.setRows(5);
+        foodDescription.setToolTipText("Describe the food here");
+        foodDescription.setMaximumSize(new java.awt.Dimension(120, 60));
+        foodDescription.setMinimumSize(new java.awt.Dimension(120, 60));
+        foodDescription.setPreferredSize(new java.awt.Dimension(120, 60));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridheight = 3;
+        getContentPane().add(foodDescription, gridBagConstraints);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FoodGenreLabel;
-    private javax.swing.JComboBox LocationSelection;
     private javax.swing.ButtonGroup VegLevel;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
     private javax.swing.Box.Filler filler5;
+    private javax.swing.JLabel foodDesLabel;
+    private javax.swing.JTextArea foodDescription;
     private javax.swing.JComboBox foodGenreList;
-    private javax.swing.JLabel foodLocationLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton neitherRadio;
     private javax.swing.JLabel newFoodName;

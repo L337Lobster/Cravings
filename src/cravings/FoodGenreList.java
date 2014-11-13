@@ -14,8 +14,8 @@ import java.util.ArrayList;
  */
 public class FoodGenreList implements Serializable{
     
-    private static ArrayList<FoodGenre> theFoodGenreList;
-    private static ArrayList<String> theFoodGenreStringList;
+    private ArrayList<FoodGenre> theFoodGenreList;
+    private ArrayList<String> theFoodGenreStringList;
     
     public FoodGenreList()
     {

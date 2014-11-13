@@ -42,7 +42,19 @@ public class FoodList implements Serializable{
     public ArrayList<String> getTheFoodStringList() {
         return theFoodStringList;
     }
-
+    public int getNextCode()
+    {
+        int temp = 0;
+        for(int i = 0; i < theFoodList.size(); i++)
+        {
+            if(theFoodList.get(i).getCode() > temp)
+            {
+                temp = theFoodList.get(i).getCode();
+            }
+        }
+        temp++;
+        return temp;
+    }
     /**
      * @param theFoodStringList the theFoodStringList to set
      */

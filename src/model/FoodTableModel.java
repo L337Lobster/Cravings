@@ -19,7 +19,7 @@ import javax.swing.table.AbstractTableModel;
 public class FoodTableModel extends AbstractTableModel{
     
     private ArrayList<Food> theData = new ArrayList();
-    private String[] theColumns = new String[]{"Name", "Genre", "VegLevel", "Location"}; 
+    private String[] theColumns = new String[]{"Code", "Name", "Genre", "VegLevel"}; 
     private AuthenticationCntl theAuthenticationCntl;
     
     public FoodTableModel()
@@ -70,12 +70,14 @@ public class FoodTableModel extends AbstractTableModel{
         switch(col)
         {
             case 0:
-                return theFood.getFoodName();
+                return theFood.getCode();
             case 1:
+                return theFood.getFoodName();
+            case 2:
                 FoodGenre temp = theAuthenticationCntl.getFGList().getGenreByCode(theFood.getFoodGenreCode());
                 String tempName = temp.getName();
                 return tempName;
-            case 2:
+            case 3:
                 if(theFood instanceof VegFood)
                 {
                     VegFood theVegFood = (VegFood) theFood;
@@ -89,8 +91,6 @@ public class FoodTableModel extends AbstractTableModel{
                     }
                 }
                 return "Neither";
-            case 3:
-                return "FSE";//theFood.getFSE().getName();
         }
         return null;
     }

@@ -9,6 +9,7 @@ import cravings.FSE;
 import cravings.Food;
 import cravings.FoodGenre;
 import cravings.FoodGenreList;
+import cravings.FoodList;
 import cravings.VegFood;
 import cravings.ViewType;
 import static cravings.ViewType.FSE;
@@ -93,11 +94,8 @@ public class ListViewCntl {
                             dialog = new CreateFoodDialogue();
                             dialog.getSubmit().addActionListener(theFoodListener);
                             dialog.getNewFoodName().setText(view.getCDText().getText());
-                            ArrayList<String> listOfFse = frame.getMainFrameCntl().getAuthenticationCntl().getFseList().getStringListOfFSEs();
                             ArrayList<String> listOfGenres = frame.getMainFrameCntl().getAuthenticationCntl().getFGList().getTheFoodGenreStringList();
-                            String[] locations = listOfFse.toArray(new String[listOfFse.size()]);
                             String[] genres = listOfGenres.toArray(new String[listOfGenres.size()]);
-                            dialog.getFSEList().setModel(new DefaultComboBoxModel(locations));
                             dialog.getGenreList().setModel(new DefaultComboBoxModel(genres));
                             dialog.setVisible(true);
                             dialog.setLocationRelativeTo(null);
@@ -125,20 +123,16 @@ public class ListViewCntl {
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            //if()
-            FSE newFSE;
             FoodGenre newGenre;
             FoodGenreList theFGList = frame.getMainFrameCntl().getAuthenticationCntl().getFGList();
+            FoodList theFoodList = frame.getMainFrameCntl().getAuthenticationCntl().getFoodList();
             Food newFood = null;
             AuthenticationCntl tempAuth = frame.getMainFrameCntl().getAuthenticationCntl();
             String name = dialog.getNewFoodName().getText();
+            String description = dialog.getDescription().getText();
             System.out.println("Name: "+name);
             String genre = dialog.getGenreList().getSelectedItem().toString();
             System.out.println("Genre: " + genre);
-            String location = dialog.getFSEList().getSelectedItem().toString();
-            System.out.println("Location: " + location);
-            int code = frame.getMainFrameCntl().getAuthenticationCntl().getFseList().getNextCode();
-            newFSE = new FSE(code, location);
             int genreCode = theFGList.getNextCode();
             if(!theFGList.getTheFoodGenreList().contains(genre))
             {
@@ -155,18 +149,18 @@ public class ListViewCntl {
                     }
                 }
             }
-            
+            int code = theFoodList.getNextCode();
             if(dialog.getNeitherRadio().isSelected())
             {
-                newFood = new Food(name, newFSE, genreCode);
+                newFood = new Food(code, name, genreCode, description);
             }
             if(dialog.getVeganRadio().isSelected())
             {
-                newFood = new VegFood(name, newFSE, genreCode, true, false);
+                newFood = new VegFood(code, name, genreCode, description, true, false);
             }
             if(dialog.getVegitRadio().isSelected())
             {
-                newFood = new VegFood(name, newFSE, genreCode, false, true);
+                newFood = new VegFood(code, name, genreCode, description, false, true);
             }
             tempAuth.getFoodList().getTheFoodList().add(newFood);
             SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();

@@ -52,12 +52,16 @@ public class SerializedDataCntl {
         ObjectInputStream in = null;
         String filePath = EXTERNAL_DATA_PATH+CRAVINGS_DATA_FILE_NAME;
         try
+        {
+            File f = new File(filePath);
+            if(f.exists())
             {
-            fis = new FileInputStream(filePath);
-            in = new ObjectInputStream(fis);
-            theSerializedDataModel = (SerializedDataModel) in.readObject();
-            in.close();
+                fis = new FileInputStream(filePath);
+                in = new ObjectInputStream(fis);
+                theSerializedDataModel = (SerializedDataModel) in.readObject();
+                in.close();
             }
+        }
         catch(IOException ex)
             {
             ex.printStackTrace();
@@ -75,10 +79,6 @@ public class SerializedDataCntl {
         String filePath = EXTERNAL_DATA_PATH+CRAVINGS_DATA_FILE_NAME;
         try
             {
-                for(int i =0; i < theSerializedDataModel.getFoodGenreList().getTheFoodGenreList().size(); i++)
-                {
-                    System.err.println(theSerializedDataModel.getFoodGenreList().getTheFoodGenreList().get(i));
-                }
             fos = new FileOutputStream(filePath);
             out = new ObjectOutputStream(fos);
             out.writeObject(theSerializedDataModel);
