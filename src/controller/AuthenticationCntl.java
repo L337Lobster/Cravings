@@ -43,6 +43,7 @@ public class AuthenticationCntl {
         {
             theFoodGenreList.getTheFoodGenreStringList().add(theFoodGenreList.getTheFoodGenreList().get(i).toString());
         }
+
         createMainFrame();
         showSplashUI();
     }

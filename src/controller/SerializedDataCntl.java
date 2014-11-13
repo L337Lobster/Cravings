@@ -38,8 +38,11 @@ public class SerializedDataCntl {
     // Creates test data if it is null
     public SerializedDataModel getSerializedDataModel(){
         if(theSerializedDataModel == null){
-            //readSerializedCollectionFile();
-            theSerializedDataModel = new SerializedDataModel();
+            readSerializedDataModel();
+            if(theSerializedDataModel == null)
+            {
+                theSerializedDataModel = new SerializedDataModel();
+            }
         }
         return theSerializedDataModel;
     }
@@ -72,6 +75,10 @@ public class SerializedDataCntl {
         String filePath = EXTERNAL_DATA_PATH+CRAVINGS_DATA_FILE_NAME;
         try
             {
+                for(int i =0; i < theSerializedDataModel.getFoodGenreList().getTheFoodGenreList().size(); i++)
+                {
+                    System.err.println(theSerializedDataModel.getFoodGenreList().getTheFoodGenreList().get(i));
+                }
             fos = new FileOutputStream(filePath);
             out = new ObjectOutputStream(fos);
             out.writeObject(theSerializedDataModel);
@@ -87,10 +94,11 @@ public class SerializedDataCntl {
      public void testPrintSerializedDataModel(ViewType type){
          if(type == ViewType.FOOD_GENRE)
          {
+             System.out.println("Test");
             FoodGenreList testFGL = theSerializedDataModel.getFoodGenreList();
             for(int i = 0; i < testFGL.getTheFoodGenreList().size(); i++)
             {
-               String tempString = testFGL.getTheFoodGenreList().get(i).getDescription();
+               String tempString = testFGL.getTheFoodGenreList().get(i).getName();
                System.out.println(tempString);
             }
          }

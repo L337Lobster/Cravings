@@ -5,11 +5,12 @@
  */
 package controller;
 
+import controller.SerializedDataCntl;
+import cravings.ViewType;
 import java.awt.*;
 import java.awt.event.*;
-import model.MainFrameModel;
-import controller.SerializedDataCntl;
 import javax.swing.*;
+import model.MainFrameModel;
 import model.SplashModel;
 import view.MainFrameView;
 import view.SplashView;
@@ -191,6 +192,7 @@ public class MainFrameCntl {
         public void actionPerformed(ActionEvent ae) {
             view.dispose();
             System.out.println("Writing Data, please wait!");
+            SerializedDataCntl.getSerializedDataCntl().testPrintSerializedDataModel(ViewType.FOOD_GENRE);
             SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().setFoodGenreList(view.getMainFrameCntl().getAuthenticationCntl().getFGList());
             SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().setTheFoodList(view.getMainFrameCntl().getAuthenticationCntl().getFoodList());
             SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();

@@ -15,25 +15,16 @@ public class FoodGenre implements Serializable{
     
     private String name;
     private int code;
-    private String description;
-    public FoodGenre(int code, String name, String desc)
-    {
-        this.code = code;
-        this.name = name;
-        description = desc;
-    }
     public FoodGenre(int code, String name)
     {
         this.code = code;
         this.name = name;
-        description = "";
     }
     public FoodGenre(String importString){
         String delimiter = "~";
         String[] tokens = importString.split(delimiter);
         code =  Integer.parseInt(tokens[1]); // From the file format at the FDA site position 1 is the code.
         name = tokens[3]; // From the file format at the FDA site position 3 is the description.
-        description = "";
     }
     public int getCode()
     {
@@ -78,20 +69,6 @@ public class FoodGenre implements Serializable{
      */
     public void setName(String name) {
         this.name = name;
-    }
-
-    /**
-     * @return the description
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * @param description the description to set
-     */
-    public void setDescription(String description) {
-        this.description = description;
     }
     
 }

@@ -169,6 +169,7 @@ public class ListViewCntl {
                 newFood = new VegFood(name, newFSE, genreCode, false, true);
             }
             tempAuth.getFoodList().getTheFoodList().add(newFood);
+            SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
             dialog.dispose();
         }
     }

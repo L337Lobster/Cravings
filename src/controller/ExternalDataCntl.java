@@ -35,10 +35,10 @@ public class ExternalDataCntl {
         else
         {
             SerializedDataCntl.getSerializedDataCntl().readSerializedDataModel();
-             SerializedDataCntl.getSerializedDataCntl().testPrintSerializedDataModel(ViewType.FOOD);
-             SerializedDataCntl.getSerializedDataCntl().testPrintSerializedDataModel(ViewType.FOOD_GENRE);
             theFoodList =  SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTheFoodList();
             theFoodGenreList =  SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getFoodGenreList();
+            SerializedDataCntl.getSerializedDataCntl().testPrintSerializedDataModel(ViewType.FOOD);
+            SerializedDataCntl.getSerializedDataCntl().testPrintSerializedDataModel(ViewType.FOOD_GENRE);
         }
     }
     public void getExternalFood(){
@@ -57,7 +57,7 @@ public class ExternalDataCntl {
         
             while(in.hasNextLine()){
                 nextLine = in.nextLine();
-                System.out.println(nextLine);
+                //System.out.println(nextLine);
                 FoodGenre tmpFoodGenre = new FoodGenre(nextLine);
                 SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getFoodGenreList().getTheFoodGenreList().add(tmpFoodGenre);
             }
@@ -72,7 +72,7 @@ public class ExternalDataCntl {
         // Read it back in.
         SerializedDataCntl.getSerializedDataCntl().readSerializedDataModel();
         // Test print to see if it worked.
-        //SerializedDataCntl.getSerializedDataCntl().testPrintSerializedDataModel(ViewType.FOOD_GENRE);
+        SerializedDataCntl.getSerializedDataCntl().testPrintSerializedDataModel(ViewType.FOOD_GENRE);
         
     }
     public void getFood(){

@@ -14,9 +14,9 @@ public class VegFood extends Food{
     private boolean isVegan;
     private boolean isVegitarian;
     
-    public VegFood(String name, FSE theFse, int theGenreCode, boolean vegan, boolean vegitarian)
+    public VegFood(int code, String name, FSE theFse, int theGenreCode, String description, boolean vegan, boolean vegitarian)
     {
-        super(name, theFse, theGenreCode);
+        super(code, name,theGenreCode,description);
         isVegan = vegan;
         isVegitarian = vegitarian;
     }

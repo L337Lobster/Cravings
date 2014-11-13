@@ -15,14 +15,15 @@ public class Food implements Serializable{
     
     private int code;
     private String foodName;
-    private FSE theFSE;
     private int theFoodGenreCode;
+    private String foodDescription;
     
-    public Food(String name, FSE location, int genreCode)
+    public Food(int foodCode, String name, int genreCode, String foodDescription)
     {
+        code = foodCode;
         theFoodGenreCode = genreCode;
-        theFSE = location;
         foodName = name;
+        this.foodDescription = foodDescription;
     }
     public Food(String importString)
     {
@@ -30,11 +31,8 @@ public class Food implements Serializable{
         String[] tokens = importString.split(delimiter);
         code = Integer.parseInt(tokens[1]);
         theFoodGenreCode = Integer.parseInt(tokens[3]);
+        foodDescription = tokens[7];
         foodName = tokens[5];
-    }
-    public FSE getFSE()
-    {
-        return theFSE;
     }
     public int getCode()
     {
@@ -61,10 +59,6 @@ public class Food implements Serializable{
     public void setFoodName(String name)
     {
         foodName = name;
-    }
-    public void setFSE(FSE newFse)
-    {
-        theFSE = newFse;
     }
     
 }
