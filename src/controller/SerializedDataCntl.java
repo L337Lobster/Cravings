@@ -6,6 +6,7 @@ package controller;
 
 import cravings.FoodGenreList;
 import cravings.FoodList;
+import cravings.FseList;
 import cravings.ViewType;
 import java.io.*;
 import model.SerializedDataModel;
@@ -108,6 +109,15 @@ public class SerializedDataCntl {
             for(int i = 0; i < testFGL.getTheFoodList().size(); i++)
             {
                String tempString = testFGL.getTheFoodList().get(i).toString();
+               System.out.println(tempString);
+            }
+         }
+         if(type == ViewType.FSE)
+         {
+            FseList testFseL = theSerializedDataModel.getFseList();
+            for(int i = 0; i < testFseL.getListOfFSEs().size(); i++)
+            {
+               String tempString = testFseL.getListOfFSEs().get(i).toString();
                System.out.println(tempString);
             }
          }

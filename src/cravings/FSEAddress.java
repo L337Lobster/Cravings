@@ -35,6 +35,18 @@ public class FSEAddress implements Serializable{
         state = new char[]{'P', 'A'};
         zipCode = 12345;
     }
+    public FSEAddress(String importString)
+    {
+        String delimiter = "-";
+        String[] tokens = importString.split(delimiter);
+        houseNum = Integer.parseInt(tokens[0]);
+        street = tokens[1];
+        city = tokens[2];
+        state = tokens[3].toCharArray();
+        zipCode = Integer.parseInt(tokens[4]);
+        
+    }
+    
     @Override
     public String toString()
     {

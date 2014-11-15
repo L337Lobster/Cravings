@@ -11,14 +11,16 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.table.AbstractTableModel;
 import model.FoodTableModel;
+import model.FseTableModel;
 /**
  * 
  * @author Jackson Hofmann
  */
 public class ListView extends javax.swing.JPanel {
     
-    private FoodTableModel theTableModel;
+    private AbstractTableModel theTableModel;
     private ViewType theListType;
     private ListViewCntl theListViewCntl;
 
@@ -32,7 +34,12 @@ public class ListView extends javax.swing.JPanel {
         theListType = listType;
         initComponents();
     }
-    public FoodTableModel getTableModel()
+    public ListView(FseTableModel myTableModel, ViewType listType) {
+        theTableModel = myTableModel;
+        theListType = listType;
+        initComponents();
+    }
+    public AbstractTableModel getTableModel()
     {
         return this.theTableModel;
     }
@@ -252,7 +259,7 @@ public class ListView extends javax.swing.JPanel {
 
         typeLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         typeLabel.setLabelFor(oldValue);
-        typeLabel.setText("Food ID:");
+        typeLabel.setText("ID:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;

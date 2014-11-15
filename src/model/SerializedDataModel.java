@@ -6,6 +6,7 @@ package model;
 
 import cravings.FoodGenreList;
 import cravings.FoodList;
+import cravings.FseList;
 import java.io.Serializable;
 
 /**
@@ -16,6 +17,7 @@ public class SerializedDataModel implements Serializable{
     
     private FoodGenreList theFoodGenreList;
     private FoodList theFoodList;
+    private FseList theFseList;
     
     
     public SerializedDataModel(){
@@ -49,6 +51,21 @@ public class SerializedDataModel implements Serializable{
      */
     public void setTheFoodList(FoodList theFoodList) {
         this.theFoodList = theFoodList;
+    }
+
+    public FseList getFseList() {
+        if(theFseList == null)
+        {
+            setTheFseList(new FseList());
+        }
+        return theFseList;
+    }
+
+    /**
+     * @param theFseList the theFseList to set
+     */
+    public void setTheFseList(FseList theFseList) {
+        this.theFseList = theFseList;
     }
     
 }

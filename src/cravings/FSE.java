@@ -15,8 +15,8 @@ public class FSE implements Serializable{
     private int code;
     private String name;
     private FSEAddress address;
-    private int[] openHour = new int[7];
-    private int[] closeHour = new int[7];
+    private int[] openHour = new int[8];
+    private int[] closeHour = new int[8];
     
     public FSE(int code, String name, FSEAddress address, int[] open, int[] close)
     {
@@ -25,16 +25,23 @@ public class FSE implements Serializable{
         openHour = open;
         closeHour = close;
     }
-    public FSE(int code, String name)
+    public FSE(String importString)
     {
-        this.code = code;
-        this.name = name;
-        address = new FSEAddress();
-        for(int i = 0; i < 7; i++)
+        String delimiter = "~";
+        String[] tokens = importString.split(delimiter);
+        code = Integer.parseInt(tokens[1]);
+        name = tokens[3];
+        int j = 1;
+        openHour[0] = 0;
+        closeHour[0] = 0;
+        for(int i = 4; i < 11; i++)
         {
-            openHour[i] = 0;
-            closeHour[i] = 0;
+            String[] hours = tokens[i].split("-");
+            openHour[j] = Integer.parseInt(hours[0]);
+            closeHour[j] = Integer.parseInt(hours[1]);
+            j++;
         }
+        address = new FSEAddress(tokens[11]);
     }
     @Override
     public boolean equals(Object o)
@@ -83,6 +90,14 @@ public class FSE implements Serializable{
     public int[] getOpenHours()
     {
         return openHour;
+    }
+    public int getDayOpenHour(int day)
+    {
+        return openHour[day];
+    }
+    public int getDayCloseHour(int day)
+    {
+        return closeHour[day];
     }
     public void setOpenHours(int[] open)
     {

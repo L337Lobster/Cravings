@@ -63,6 +63,8 @@ public class MainMenuCntl {
         
         FoodButtonListener theFoodListener = new FoodButtonListener();
         view.getFoodButton().addActionListener(theFoodListener);
+        FseButtonListener theFseListener = new FseButtonListener();
+        view.getFseButton().addActionListener(theFseListener);
     }
     
     public void initBounds()
@@ -80,6 +82,12 @@ public class MainMenuCntl {
             frame.getMainFrameCntl().getAuthenticationCntl().showListView(ViewType.FOOD, view);
         }
     }
-    
+    public class FseButtonListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            frame.getMainFrameCntl().getAuthenticationCntl().showListView(ViewType.FSE, view);
+        }
+    }
     
 }

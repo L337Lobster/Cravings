@@ -6,8 +6,10 @@
 package model;
 
 import controller.AuthenticationCntl;
+import cravings.DayOfTheWeek;
 import cravings.FSE;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -34,16 +36,16 @@ public class FseTableModel extends AbstractTableModel{
         theData.add(theFSE);
         fireTableDataChanged();
     }
-    public void updateFoodList(ArrayList<FSE> theFoodList)
+    public void updateFseList(ArrayList<FSE> theFseList)
     {
-        theData = theFoodList;
+        theData = theFseList;
         fireTableDataChanged();
     }
     public FSE removesedAt(int row)
     {
         return theData.remove(row);
     }
-    public FSE getFoodAt(int row)
+    public FSE getFseAt(int row)
     {
         return theData.get(row);
     }
@@ -72,7 +74,10 @@ public class FseTableModel extends AbstractTableModel{
             case 1:
                 return theFSE.getAddress().getShortValue();
             case 2:
-                return "Hours";
+                Calendar c = Calendar.getInstance();
+                c.setTime(c.getTime());
+                int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+                return String.format("%04d", theFSE.getDayOpenHour(dayOfWeek)) + " - " + String.format("%04d", theFSE.getDayCloseHour(dayOfWeek));
         }
         return null;
     }

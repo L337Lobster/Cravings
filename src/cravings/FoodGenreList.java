@@ -22,6 +22,16 @@ public class FoodGenreList implements Serializable{
         theFoodGenreList = new ArrayList();
         theFoodGenreStringList = new ArrayList();
     }
+    public void refreshStringList()
+    {
+        for(int i = 0; i < theFoodGenreList.size(); i++)
+        {
+            if(!theFoodGenreStringList.contains(theFoodGenreList.get(i).toString()))
+            {
+                theFoodGenreStringList.add(theFoodGenreList.get(i).toString());
+            }
+        }
+    }
     public int getNextCode()
     {
         int temp = 0;

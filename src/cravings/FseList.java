@@ -14,27 +14,28 @@ import java.util.ArrayList;
  */
 public class FseList implements Serializable{
     
-    private static ArrayList<FSE> theFseList;
-    private static ArrayList<String> theFseStringList;
+    private ArrayList<FSE> theFseList;
+    private ArrayList<String> theFseStringList;
     
     public FseList(){
         theFseList = new ArrayList<FSE>();
         theFseStringList = new ArrayList<String>();
-        for(int i = 0; i < 10; i++)
-        {
-            int[] open = {0, 1, 2, 3, 4, 5, 6};
-            int[] close = {0, 1, 2, 3, 4, 5, 6};
-            FSEAddress address = new FSEAddress();
-            String name = "FSE"+i;
-            FSE tempFse = new FSE(i, name,address, open, close);
-            theFseList.add(tempFse);
-        }
         for(int i =0; i < theFseList.size(); i++)
         {
             theFseStringList.add(theFseList.get(i).toString());
         }
     }
-        public int getNextCode()
+    public void refreshStringList()
+    {
+        for(int i = 0; i < theFseList.size(); i++)
+        {
+            if(!theFseStringList.contains(theFseList.get(i).toString()))
+            {
+                theFseStringList.add(theFseList.get(i).toString());
+            }
+        }
+    }
+    public int getNextCode()
     {
         int temp = 0;
         for(int i = 0; i < theFseList.size(); i++)

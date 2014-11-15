@@ -7,10 +7,12 @@
 package controller;
 
 import controller.SerializedDataCntl;
+import cravings.FSE;
 import cravings.Food;
 import cravings.FoodGenre;
 import cravings.FoodGenreList;
 import cravings.FoodList;
+import cravings.FseList;
 import cravings.ViewType;
 import java.io.File;
 import java.util.Scanner;
@@ -25,9 +27,11 @@ public class ExternalDataCntl {
     private final String EXTERNAL_DATA_PATH = "cravings_data\\";
     private final String FOOD_GENRE_FILE_NAME = "FD_GENRE.TXT";
     private final String FOOD_FILE_NAME = "FOOD_DES.txt";
+    private final String FSE_FILE_NAME = "FSE_LIST.txt";
     
     private FoodList theFoodList;
     private FoodGenreList theFoodGenreList;
+    private FseList theFseList;
     public ExternalDataCntl(){
         if(confirmImport()){
             getExternalFood();
@@ -37,15 +41,16 @@ public class ExternalDataCntl {
             SerializedDataCntl.getSerializedDataCntl().readSerializedDataModel();
             theFoodList =  SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTheFoodList();
             theFoodGenreList =  SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getFoodGenreList();
-            SerializedDataCntl.getSerializedDataCntl().testPrintSerializedDataModel(ViewType.FOOD);
-            SerializedDataCntl.getSerializedDataCntl().testPrintSerializedDataModel(ViewType.FOOD_GENRE);
+            theFseList = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getFseList();
         }
     }
     public void getExternalFood(){
         getFoodGenre();
         getFood();
+        getFSE();
         theFoodList = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTheFoodList();
         theFoodGenreList = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getFoodGenreList();
+        theFseList = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getFseList();
     }
     
     public void getFoodGenre(){
@@ -72,7 +77,7 @@ public class ExternalDataCntl {
         // Read it back in.
         SerializedDataCntl.getSerializedDataCntl().readSerializedDataModel();
         // Test print to see if it worked.
-        SerializedDataCntl.getSerializedDataCntl().testPrintSerializedDataModel(ViewType.FOOD_GENRE);
+        //SerializedDataCntl.getSerializedDataCntl().testPrintSerializedDataModel(ViewType.FOOD_GENRE);
         
     }
     public void getFood(){
@@ -127,6 +132,38 @@ public class ExternalDataCntl {
      */
     public FoodGenreList getTheFoodGenreList() {
         return theFoodGenreList;
+    }
+    
+    public FseList getTheFseList()
+    {
+        return this.theFseList;
+    }
+
+    private void getFSE() {
+        String filePath = EXTERNAL_DATA_PATH+FSE_FILE_NAME;
+        File fseFile = new File(filePath);
+        try{
+            Scanner in = new Scanner(fseFile);
+            String nextLine = "";
+        
+            while(in.hasNextLine()){
+                nextLine = in.nextLine();
+                //System.out.println(nextLine);
+                FSE tmpFse = new FSE(nextLine);
+                SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getFseList().getListOfFSEs().add(tmpFse);
+            }
+            // Simply prints the size of the newly imported FoodGroupList
+            //System.out.println(SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getFoodGenreList().getTheFoodGenreList().size());
+            
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        // Write the newly imported FoodGroupList to disk.
+        SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
+        // Read it back in.
+        SerializedDataCntl.getSerializedDataCntl().readSerializedDataModel();
+        // Test print to see if it worked.
+        //SerializedDataCntl.getSerializedDataCntl().testPrintSerializedDataModel(ViewType.FSE);
     }
     
 }

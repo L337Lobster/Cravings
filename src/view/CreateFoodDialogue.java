@@ -83,6 +83,7 @@ public class CreateFoodDialogue extends javax.swing.JDialog {
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(25, 0), new java.awt.Dimension(25, 0), new java.awt.Dimension(25, 32767));
         submit = new javax.swing.JButton();
         foodDescription = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(500, 200));
@@ -185,6 +186,7 @@ public class CreateFoodDialogue extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         getContentPane().add(submit, gridBagConstraints);
 
         foodDescription.setColumns(20);
@@ -199,8 +201,24 @@ public class CreateFoodDialogue extends javax.swing.JDialog {
         gridBagConstraints.gridheight = 3;
         getContentPane().add(foodDescription, gridBagConstraints);
 
+        jButton1.setText("Cancel");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        getContentPane().add(jButton1, gridBagConstraints);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -214,6 +232,7 @@ public class CreateFoodDialogue extends javax.swing.JDialog {
     private javax.swing.JLabel foodDesLabel;
     private javax.swing.JTextArea foodDescription;
     private javax.swing.JComboBox foodGenreList;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton neitherRadio;
     private javax.swing.JLabel newFoodName;

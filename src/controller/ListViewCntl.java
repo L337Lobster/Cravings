@@ -6,19 +6,21 @@
 package controller;
 
 import cravings.FSE;
+import cravings.FSEAddress;
 import cravings.Food;
 import cravings.FoodGenre;
 import cravings.FoodGenreList;
 import cravings.FoodList;
 import cravings.VegFood;
 import cravings.ViewType;
-import static cravings.ViewType.FSE;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import view.CreateFoodDialogue;
+import view.CreateFseDialogue;
 import view.ListView;
 import view.MainFrameView;
 
@@ -27,7 +29,8 @@ import view.MainFrameView;
  * @author Jackson Hofmann
  */
 public class ListViewCntl {
-    private CreateFoodDialogue dialog;
+    private CreateFoodDialogue foodDialog;
+    private CreateFseDialogue fseDialog;
     private ListView view;
     private MainFrameView frame;
     
@@ -86,22 +89,42 @@ public class ListViewCntl {
                     JOptionPane.showMessageDialog(view,"Please select an action");
                     break;
                 case 1: //create
-                    java.awt.EventQueue.invokeLater(new Runnable() 
-                    {
-                        public void run() 
-                        {
-                            FoodPopupListener theFoodListener = new FoodPopupListener();
-                            dialog = new CreateFoodDialogue();
-                            dialog.getSubmit().addActionListener(theFoodListener);
-                            dialog.getNewFoodName().setText(view.getCDText().getText());
-                            ArrayList<String> listOfGenres = frame.getMainFrameCntl().getAuthenticationCntl().getFGList().getTheFoodGenreStringList();
-                            String[] genres = listOfGenres.toArray(new String[listOfGenres.size()]);
-                            dialog.getGenreList().setModel(new DefaultComboBoxModel(genres));
-                            dialog.setVisible(true);
-                            dialog.setLocationRelativeTo(null);
-                            dialog.requestFocus();
-                        }
-                    });
+                   if(view.getViewType() == ViewType.FOOD)
+                   {
+                       java.awt.EventQueue.invokeLater(new Runnable() 
+                            {
+                                public void run() 
+                                {
+                                    FoodPopupListener theFoodListener = new FoodPopupListener();
+                                    foodDialog = new CreateFoodDialogue();
+                                    foodDialog.getSubmit().addActionListener(theFoodListener);
+                                    foodDialog.getNewFoodName().setText(view.getCDText().getText());
+                                    frame.getMainFrameCntl().getAuthenticationCntl().getFGList().refreshStringList();
+                                    ArrayList<String> listOfGenres = frame.getMainFrameCntl().getAuthenticationCntl().getFGList().getTheFoodGenreStringList();
+                                    String[] genres = listOfGenres.toArray(new String[listOfGenres.size()]);
+                                    foodDialog.getGenreList().setModel(new DefaultComboBoxModel(genres));
+                                    foodDialog.setVisible(true);
+                                    foodDialog.setLocationRelativeTo(null);
+                                    foodDialog.requestFocus();
+                                }
+                            });
+                   }
+                   else if(view.getViewType() == ViewType.FSE)
+                   {
+                       java.awt.EventQueue.invokeLater(new Runnable() 
+                            {
+                                public void run() 
+                                {
+                                    FsePopupListener theFseListener = new FsePopupListener();
+                                    fseDialog = new CreateFseDialogue();
+                                    fseDialog.getSubmit().addActionListener(theFseListener);
+                                    fseDialog.getNewFseName().setText(view.getCDText().getText());
+                                    fseDialog.setVisible(true);
+                                    fseDialog.setLocationRelativeTo(null);
+                                    fseDialog.requestFocus();
+                                }
+                            });
+                   }
                     
                     break;
                 case 2: //delete
@@ -128,11 +151,9 @@ public class ListViewCntl {
             FoodList theFoodList = frame.getMainFrameCntl().getAuthenticationCntl().getFoodList();
             Food newFood = null;
             AuthenticationCntl tempAuth = frame.getMainFrameCntl().getAuthenticationCntl();
-            String name = dialog.getNewFoodName().getText();
-            String description = dialog.getDescription().getText();
-            System.out.println("Name: "+name);
-            String genre = dialog.getGenreList().getSelectedItem().toString();
-            System.out.println("Genre: " + genre);
+            String name = foodDialog.getNewFoodName().getText();
+            String description = foodDialog.getDescription().getText();
+            String genre = foodDialog.getGenreList().getSelectedItem().toString();
             int genreCode = theFGList.getNextCode();
             if(!theFGList.getTheFoodGenreList().contains(genre))
             {
@@ -150,21 +171,51 @@ public class ListViewCntl {
                 }
             }
             int code = theFoodList.getNextCode();
-            if(dialog.getNeitherRadio().isSelected())
+            if(foodDialog.getNeitherRadio().isSelected())
             {
                 newFood = new Food(code, name, genreCode, description);
             }
-            if(dialog.getVeganRadio().isSelected())
+            if(foodDialog.getVeganRadio().isSelected())
             {
                 newFood = new VegFood(code, name, genreCode, description, true, false);
             }
-            if(dialog.getVegitRadio().isSelected())
+            if(foodDialog.getVegitRadio().isSelected())
             {
                 newFood = new VegFood(code, name, genreCode, description, false, true);
             }
             tempAuth.getFoodList().getTheFoodList().add(newFood);
             SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
-            dialog.dispose();
+            foodDialog.dispose();
+        }
+    }
+    
+    public class FsePopupListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            String name = fseDialog.getNewFseName().getText();
+            int houseNum = Integer.parseInt(fseDialog.getHouseNumField().getText());
+            String street = fseDialog.getStreetField().getText();
+            char[] state = fseDialog.getStateField().getText().toCharArray();
+            int zipcode = Integer.parseInt(fseDialog.getZipCodeField().getText());
+            String city = fseDialog.getCityField().getText();
+            FSEAddress address = new FSEAddress(city, street, state, houseNum, zipcode);
+            int[] openHour = new int[8], closeHour = new int[8];
+            String hoursString = fseDialog.getHoursField().getText();
+            String[] hours = hoursString.split("~");
+            for(int i = 1; i < 7; i++)
+            {
+                String[] day = hours[i-1].split("-");
+                openHour[i] = Integer.parseInt(day[0]);
+                closeHour[i] = Integer.parseInt(day[1]);
+            }
+            int code = frame.getMainFrameCntl().getAuthenticationCntl().getFseList().getNextCode();
+            FSE newFSE = new FSE(code, name, address, openHour, closeHour);
+            AuthenticationCntl tempAuth = frame.getMainFrameCntl().getAuthenticationCntl();
+            tempAuth.getFseList().getListOfFSEs().add(newFSE);
+            SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
+            fseDialog.dispose();
         }
     }
 }

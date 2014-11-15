@@ -11,7 +11,16 @@ package cravings;
  */
 public enum DayOfTheWeek {
     
-    MONDAY(0)
+    
+    SUNDAY(1)
+    {
+        @Override
+        public String toString()
+        {
+            return "Sunday";
+        }
+    },
+    MONDAY(2)
     {
         @Override
         public String toString()
@@ -19,7 +28,7 @@ public enum DayOfTheWeek {
             return "Monday";
         }
     },
-    TUESDAY(1)
+    TUESDAY(3)
     {
         @Override
         public String toString()
@@ -27,7 +36,7 @@ public enum DayOfTheWeek {
             return "Tuesday";
         }
     },
-    WEDNESDAY(2)
+    WEDNESDAY(4)
     {
         @Override
         public String toString()
@@ -35,7 +44,7 @@ public enum DayOfTheWeek {
             return "Wednesday";
         }
     },
-    THURSDAY(3)
+    THURSDAY(5)
     {
         @Override
         public String toString()
@@ -43,7 +52,7 @@ public enum DayOfTheWeek {
             return "Thursday";
         }
     },
-    FRIDAY(4)
+    FRIDAY(6)
     {
         @Override
         public String toString()
@@ -51,20 +60,12 @@ public enum DayOfTheWeek {
             return "Friday";
         }
     },
-    SATURDAY(5)
+    SATURDAY(7)
     {
         @Override
         public String toString()
         {
             return "Saturday";
-        }
-    },
-    SUNDAY(6)
-    {
-        @Override
-        public String toString()
-        {
-            return "Sunday";
         }
     };
     

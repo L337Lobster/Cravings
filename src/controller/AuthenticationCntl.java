@@ -39,6 +39,7 @@ public class AuthenticationCntl {
         theExternalDataCntl = new ExternalDataCntl();
         theFoodList = theExternalDataCntl.getTheFoodList();
         theFoodGenreList = theExternalDataCntl.getTheFoodGenreList();
+        theFseList = theExternalDataCntl.getTheFseList();
         for(int i = 0; i < theFoodGenreList.getTheFoodGenreList().size(); i++)
         {
             theFoodGenreList.getTheFoodGenreStringList().add(theFoodGenreList.getTheFoodGenreList().get(i).toString());
@@ -51,7 +52,17 @@ public class AuthenticationCntl {
     public void showListView(ViewType listType, JPanel panel)
     {
         FoodTableModel theFoodTableModel = new FoodTableModel(theFoodList.getTheFoodList(), this);
-        theListView = new ListView(theFoodTableModel, listType);
+        FseTableModel theFseTableModel = new FseTableModel(theFseList.getListOfFSEs(), this);
+        switch(listType)
+        {
+            case FOOD:
+                theListView = new ListView(theFoodTableModel, listType);
+                break;
+            case FSE:
+                theListView = new ListView(theFseTableModel, listType);
+                break;
+        }
+        
         ListViewCntl theListViewCntl = new ListViewCntl(theListView, theMainFrameView);
         theMainFrameView.getMainFrameCntl().replacePanel(panel, theListView);
     }
