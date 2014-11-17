@@ -28,7 +28,18 @@ public class FoodList implements Serializable{
     public ArrayList<Food> getTheFoodList() {
         return theFoodList;
     }
-
+    public Food getFoodByCode(int code)
+    {
+        Food temp = null;
+        for(int i = 0; i < theFoodList.size(); i++)
+        {
+            if(theFoodList.get(i).getCode() == code)
+            {
+                temp = theFoodList.get(i);
+            }
+        }
+        return temp;
+    }
     /**
      * @param theFoodList the theFoodList to set
      */

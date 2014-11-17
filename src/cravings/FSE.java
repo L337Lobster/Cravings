@@ -119,6 +119,11 @@ public class FSE implements Serializable{
     {
         this.closeHour[day.toInt()] = hour;
     }
+    public String getDayHours(DayOfTheWeek day)
+    {
+        
+        return String.format("%04d", this.getDayOpenHour(day.toInt())) + " - " + String.format("%04d", this.getDayCloseHour(day.toInt()));
+    }
 
     /**
      * @return the code

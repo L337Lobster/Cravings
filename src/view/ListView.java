@@ -10,6 +10,7 @@ import cravings.ViewType;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.AbstractTableModel;
 import model.FoodTableModel;
@@ -38,6 +39,10 @@ public class ListView extends javax.swing.JPanel {
         theTableModel = myTableModel;
         theListType = listType;
         initComponents();
+    }
+    public JTable getTable()
+    {
+        return this.viewReadData;
     }
     public AbstractTableModel getTableModel()
     {
@@ -84,6 +89,7 @@ public class ListView extends javax.swing.JPanel {
         titlePanel = new javax.swing.JPanel();
         viewTitle = new javax.swing.JLabel();
         mainMenu = new javax.swing.JButton();
+        detailButton = new javax.swing.JButton();
         readPane = new javax.swing.JScrollPane();
         viewReadData = new javax.swing.JTable();
         createDeletePanel = new javax.swing.JPanel();
@@ -132,9 +138,9 @@ public class ListView extends javax.swing.JPanel {
         viewTitle.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         viewTitle.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         viewTitle.setText("Title");
-        viewTitle.setMaximumSize(new java.awt.Dimension(400, 29));
-        viewTitle.setMinimumSize(new java.awt.Dimension(400, 29));
-        viewTitle.setPreferredSize(new java.awt.Dimension(400, 29));
+        viewTitle.setMaximumSize(new java.awt.Dimension(300, 29));
+        viewTitle.setMinimumSize(new java.awt.Dimension(300, 29));
+        viewTitle.setPreferredSize(new java.awt.Dimension(300, 29));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -147,8 +153,21 @@ public class ListView extends javax.swing.JPanel {
         mainMenu.setMinimumSize(new java.awt.Dimension(150, 29));
         mainMenu.setPreferredSize(new java.awt.Dimension(150, 29));
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         titlePanel.add(mainMenu, gridBagConstraints);
+
+        detailButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        detailButton.setText("Details");
+        detailButton.setMaximumSize(new java.awt.Dimension(100, 23));
+        detailButton.setMinimumSize(new java.awt.Dimension(100, 23));
+        detailButton.setPreferredSize(new java.awt.Dimension(100, 23));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        titlePanel.add(detailButton, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -305,7 +324,7 @@ public class ListView extends javax.swing.JPanel {
         updatePanel.add(newValue, gridBagConstraints);
 
         fieldToUpdate.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        fieldToUpdate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Name", "Type", "Description" }));
+        fieldToUpdate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Name" }));
         fieldToUpdate.setMinimumSize(new java.awt.Dimension(158, 20));
         fieldToUpdate.setPreferredSize(new java.awt.Dimension(158, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -410,6 +429,7 @@ public class ListView extends javax.swing.JPanel {
     private javax.swing.JComboBox createDeleteAction;
     private javax.swing.JTextField createDeleteField;
     private javax.swing.JPanel createDeletePanel;
+    private javax.swing.JButton detailButton;
     private javax.swing.JComboBox fieldToUpdate;
     private javax.swing.Box.Filler leftStrut;
     private javax.swing.Box.Filler leftStrutCD;
@@ -440,5 +460,19 @@ public class ListView extends javax.swing.JPanel {
      */
     public javax.swing.JButton getMainMenu() {
         return mainMenu;
+    }
+
+    /**
+     * @return the detailButton
+     */
+    public javax.swing.JButton getDetailButton() {
+        return detailButton;
+    }
+
+    /**
+     * @param detailButton the detailButton to set
+     */
+    public void setDetailButton(javax.swing.JButton detailButton) {
+        this.detailButton = detailButton;
     }
 }

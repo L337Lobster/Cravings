@@ -60,5 +60,19 @@ public class Food implements Serializable{
     {
         foodName = name;
     }
+
+    /**
+     * @return the foodDescription
+     */
+    public String getFoodDescription() {
+        return foodDescription;
+    }
+
+    /**
+     * @param foodDescription the foodDescription to set
+     */
+    public void setFoodDescription(String foodDescription) {
+        this.foodDescription = foodDescription;
+    }
     
 }

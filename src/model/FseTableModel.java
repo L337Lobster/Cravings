@@ -63,7 +63,10 @@ public class FseTableModel extends AbstractTableModel{
     public String getColumnName(int col) {
         return theColumns[col];
      }
-
+    public FSE getFSEAt(int row)
+    {
+        return theData.get(row);
+    }
     @Override
     public Object getValueAt(int row, int col) {
         FSE theFSE = (FSE) theData.get(row);

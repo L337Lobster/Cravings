@@ -50,7 +50,7 @@ public class FSEAddress implements Serializable{
     @Override
     public String toString()
     {
-        return houseNum + " " + street + ", " + city + ", " + state + " " + zipCode;
+        return houseNum + " " + street + ", " + city + ", " + state[0] + state[1] + " " + zipCode;
     }
     public String getShortValue()
     {

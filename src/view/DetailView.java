@@ -5,6 +5,8 @@
  */
 package view;
 
+import cravings.ViewType;
+
 /**
  *
  * @author Jackson Hofmann
@@ -14,7 +16,9 @@ public class DetailView extends javax.swing.JPanel {
     /**
      * Creates new form DetailView
      */
-    public DetailView() {
+    private ViewType viewType;
+    public DetailView(ViewType viewType) {
+        this.viewType = viewType;
         initComponents();
     }
 
@@ -26,23 +30,231 @@ public class DetailView extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
+
+        jScrollPane1 = new javax.swing.JScrollPane();
+        detailDetails = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
+        detailPicture = new javax.swing.JLabel();
+        detailTitle = new javax.swing.JTextField();
+        detailSubTitle = new javax.swing.JTextField();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 32767));
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 32767));
+        mainMenuButton = new javax.swing.JButton();
+        editButton = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(600, 800));
         setMinimumSize(new java.awt.Dimension(600, 800));
+        setPreferredSize(new java.awt.Dimension(600, 801));
+        setLayout(new java.awt.GridBagLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-        );
+        jScrollPane1.setMaximumSize(new java.awt.Dimension(560, 630));
+        jScrollPane1.setMinimumSize(new java.awt.Dimension(560, 630));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(560, 630));
+
+        detailDetails.setEditable(false);
+        detailDetails.setColumns(5);
+        detailDetails.setLineWrap(true);
+        detailDetails.setRows(1);
+        detailDetails.setWrapStyleWord(true);
+        detailDetails.setMaximumSize(new java.awt.Dimension(540, 630));
+        detailDetails.setMinimumSize(new java.awt.Dimension(540, 630));
+        detailDetails.setPreferredSize(new java.awt.Dimension(540, 630));
+        jScrollPane1.setViewportView(detailDetails);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(jScrollPane1, gridBagConstraints);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setMaximumSize(new java.awt.Dimension(150, 150));
+        jPanel1.setMinimumSize(new java.awt.Dimension(150, 150));
+        jPanel1.setPreferredSize(new java.awt.Dimension(150, 150));
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        detailPicture.setText("Picture");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        jPanel1.add(detailPicture, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        add(jPanel1, gridBagConstraints);
+
+        detailTitle.setEditable(false);
+        detailTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        detailTitle.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        detailTitle.setText("Title");
+        detailTitle.setMaximumSize(new java.awt.Dimension(150, 28));
+        detailTitle.setMinimumSize(new java.awt.Dimension(150, 28));
+        detailTitle.setPreferredSize(new java.awt.Dimension(150, 28));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 4;
+        add(detailTitle, gridBagConstraints);
+
+        detailSubTitle.setEditable(false);
+        detailSubTitle.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        detailSubTitle.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        detailSubTitle.setText("Subtitle");
+        detailSubTitle.setMaximumSize(new java.awt.Dimension(150, 28));
+        detailSubTitle.setMinimumSize(new java.awt.Dimension(150, 28));
+        detailSubTitle.setPreferredSize(new java.awt.Dimension(150, 28));
+        detailSubTitle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                detailSubTitleActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 4;
+        add(detailSubTitle, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 3;
+        add(filler1, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        add(filler2, gridBagConstraints);
+
+        mainMenuButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        mainMenuButton.setText("Main Menu");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        add(mainMenuButton, gridBagConstraints);
+
+        editButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        editButton.setText("Edit");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        add(editButton, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void detailSubTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailSubTitleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_detailSubTitleActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea detailDetails;
+    private javax.swing.JLabel detailPicture;
+    private javax.swing.JTextField detailSubTitle;
+    private javax.swing.JTextField detailTitle;
+    private javax.swing.JButton editButton;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton mainMenuButton;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the viewType
+     */
+    public ViewType getViewType() {
+        return viewType;
+    }
+
+    /**
+     * @param viewType the viewType to set
+     */
+    public void setViewType(ViewType viewType) {
+        this.viewType = viewType;
+    }
+
+    /**
+     * @return the detailPicture
+     */
+    public javax.swing.JLabel getDetailPicture() {
+        return detailPicture;
+    }
+
+    /**
+     * @param detailPicture the detailPicture to set
+     */
+    public void setDetailPicture(javax.swing.JLabel detailPicture) {
+        this.detailPicture = detailPicture;
+    }
+
+    /**
+     * @return the detailSubTitle
+     */
+    public javax.swing.JTextField getDetailSubTitle() {
+        return detailSubTitle;
+    }
+
+    /**
+     * @param detailSubTitle the detailSubTitle to set
+     */
+    public void setDetailSubTitle(javax.swing.JTextField detailSubTitle) {
+        this.detailSubTitle = detailSubTitle;
+    }
+
+    /**
+     * @return the detailTitle
+     */
+    public javax.swing.JTextField getDetailTitle() {
+        return detailTitle;
+    }
+
+    /**
+     * @param detailTitle the detailTitle to set
+     */
+    public void setDetailTitle(javax.swing.JTextField detailTitle) {
+        this.detailTitle = detailTitle;
+    }
+
+    /**
+     * @return the editButton
+     */
+    public javax.swing.JButton getEditButton() {
+        return editButton;
+    }
+
+    /**
+     * @return the jTextArea1
+     */
+    public javax.swing.JTextArea getDetailDetails() {
+        return detailDetails;
+    }
+
+    /**
+     * @param jTextArea1 the jTextArea1 to set
+     */
+    public void setDetailDetails(javax.swing.JTextArea jTextArea1) {
+        this.detailDetails = jTextArea1;
+    }
+
+    /**
+     * @return the mainMenuButton
+     */
+    public javax.swing.JButton getMainMenuButton() {
+        return mainMenuButton;
+    }
+
+    /**
+     * @param editButton the editButton to set
+     */
+    public void setEditButton(javax.swing.JButton editButton) {
+        this.editButton = editButton;
+    }
 }

@@ -26,6 +26,7 @@ public class AuthenticationCntl {
     private UserList theUserList;
     private MainMenuView theMainMenuView;
     private ListView theListView;
+    private DetailView theDetailView;
     private FseList theFseList;
     private FoodList theFoodList;
     private FoodGenreList theFoodGenreList;
@@ -65,6 +66,18 @@ public class AuthenticationCntl {
         
         ListViewCntl theListViewCntl = new ListViewCntl(theListView, theMainFrameView);
         theMainFrameView.getMainFrameCntl().replacePanel(panel, theListView);
+    }
+    public void showDetailView(ViewType detailType, Food theFood, JPanel panel)
+    {
+        theDetailView = new DetailView(ViewType.FOOD);
+        DetailViewCntl foodDetailCntl = new DetailViewCntl(theDetailView, theMainFrameView, theFood);
+        theMainFrameView.getMainFrameCntl().replacePanel(panel, theDetailView);
+    }
+    public void showDetailView(ViewType detailType, FSE theFse, JPanel panel)
+    {
+        theDetailView = new DetailView(ViewType.FSE);
+        DetailViewCntl foodDetailCntl = new DetailViewCntl(theDetailView, theMainFrameView, theFse);
+        theMainFrameView.getMainFrameCntl().replacePanel(panel, theDetailView);
     }
     
     /**

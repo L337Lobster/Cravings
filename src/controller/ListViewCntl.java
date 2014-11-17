@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import model.FseTableModel;
 import view.CreateFoodDialogue;
 import view.CreateFseDialogue;
 import view.ListView;
@@ -60,9 +61,11 @@ public class ListViewCntl {
             frame.getMainFrameCntl().setTitle("Default");
             view.getCDLabel().setText("Default");
         }
+        DetailButtonListener detailListener = new DetailButtonListener();
         CDListener theCDListener = new CDListener();
         MainMenuButtonListener backListener = new MainMenuButtonListener();
         UpdateListener theUpdateListener = new UpdateListener();
+        view.getDetailButton().addActionListener(detailListener);
         view.getMainMenu().addActionListener(backListener);
         view.getCDButton().addActionListener(theCDListener);
         view.getUpdateButton().addActionListener(theUpdateListener);
@@ -130,6 +133,26 @@ public class ListViewCntl {
                 case 2: //delete
                     break;
 
+            }
+        }
+    }
+    public class DetailButtonListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            if(ListViewCntl.this.view.getViewType() == ViewType.FOOD)
+            {
+                int row = view.getTable().getSelectedRow();
+                Food temp = frame.getMainFrameCntl().getAuthenticationCntl().getFoodList().getFoodByCode((Integer)view.getTable().getValueAt(row, 0));
+                frame.getMainFrameCntl().getAuthenticationCntl().showDetailView(ViewType.FOOD, temp, view);
+            }
+            else if(ListViewCntl.this.view.getViewType() == ViewType.FSE)
+            {
+                int row = view.getTable().getSelectedRow();
+                FseTableModel tempModel = (FseTableModel)view.getTableModel();
+                FSE temp = (FSE)tempModel.getFSEAt(row);
+                frame.getMainFrameCntl().getAuthenticationCntl().showDetailView(ViewType.FSE, temp, view);
             }
         }
     }

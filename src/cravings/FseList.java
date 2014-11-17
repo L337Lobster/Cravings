@@ -35,6 +35,18 @@ public class FseList implements Serializable{
             }
         }
     }
+    public FSE getFseByCode(int code)
+    {
+        FSE temp = null;
+        for(int i = 0; i < theFseList.size(); i++)
+        {
+            if(theFseList.get(i).getCode() == code)
+            {
+                temp = theFseList.get(i);
+            }
+        }
+        return temp;
+    }
     public int getNextCode()
     {
         int temp = 0;
