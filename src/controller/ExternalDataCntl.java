@@ -110,7 +110,7 @@ public class ExternalDataCntl {
     
     public boolean confirmImport(){
             boolean importConfirmed = false;
-            String message = "Are you sure you want to import foods from text file?";
+            String message = "Are you sure you want to import the data from text file?\nThis will overwrite the curently saved data.";
             String title = "Import Foods";
             // display the JOptionPane showConfirmDialog
             int result = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);

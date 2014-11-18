@@ -61,10 +61,12 @@ public class ListViewCntl {
             frame.getMainFrameCntl().setTitle("Default");
             view.getCDLabel().setText("Default");
         }
+        CDChangeTitle cdTitleListener = new CDChangeTitle();
         DetailButtonListener detailListener = new DetailButtonListener();
         CDListener theCDListener = new CDListener();
         MainMenuButtonListener backListener = new MainMenuButtonListener();
         UpdateListener theUpdateListener = new UpdateListener();
+        view.getCDAction().addActionListener(cdTitleListener);
         view.getDetailButton().addActionListener(detailListener);
         view.getMainMenu().addActionListener(backListener);
         view.getCDButton().addActionListener(theCDListener);
@@ -78,6 +80,37 @@ public class ListViewCntl {
         @Override
         public void actionPerformed(ActionEvent ae) {
             
+        }
+        
+    }
+    public class CDChangeTitle implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            switch(view.getCDAction().getSelectedIndex())
+            {
+                case 0:
+                    //view.getTypeTitleCDLabel().setFont(view.getTypeTitleCDLabel().getFont().deriveFont(18.0f));
+                    view.getTypeTitleCDLabel().setText("Select an action:");
+                    break;
+                case 1:
+                    //view.getTypeTitleCDLabel().setFont(view.getTypeTitleCDLabel().getFont().deriveFont(18.0f));
+                    switch(view.getViewType())
+                    {
+                        case FOOD:
+                            view.getTypeTitleCDLabel().setText("Food Name:");
+                            break;
+                        case FSE:
+                            view.getTypeTitleCDLabel().setText("FSE Name:");
+                            break;
+                    }
+                    break;
+                case 2:
+                    //view.getTypeTitleCDLabel().setFont(view.getTypeTitleCDLabel().getFont().deriveFont(18.0f));
+                    view.getTypeTitleCDLabel().setText("ID:");
+                    break;
+            }
         }
         
     }
@@ -101,6 +134,7 @@ public class ListViewCntl {
                                     FoodPopupListener theFoodListener = new FoodPopupListener();
                                     foodDialog = new CreateFoodDialogue();
                                     foodDialog.getSubmit().addActionListener(theFoodListener);
+                                    foodDialog.getRootPane().setDefaultButton(foodDialog.getSubmit());
                                     foodDialog.getNewFoodName().setText(view.getCDText().getText());
                                     frame.getMainFrameCntl().getAuthenticationCntl().getFGList().refreshStringList();
                                     ArrayList<String> listOfGenres = frame.getMainFrameCntl().getAuthenticationCntl().getFGList().getTheFoodGenreStringList();
@@ -121,6 +155,7 @@ public class ListViewCntl {
                                     FsePopupListener theFseListener = new FsePopupListener();
                                     fseDialog = new CreateFseDialogue();
                                     fseDialog.getSubmit().addActionListener(theFseListener);
+                                    fseDialog.getRootPane().setDefaultButton(fseDialog.getSubmit());
                                     fseDialog.getNewFseName().setText(view.getCDText().getText());
                                     fseDialog.setVisible(true);
                                     fseDialog.setLocationRelativeTo(null);
@@ -135,6 +170,18 @@ public class ListViewCntl {
 
             }
         }
+    }
+    public boolean confirmDelete(){
+            boolean deleteConfirmed = false;
+            
+            String message = "Are you sure you want to delete the following food:.";
+            String title = "Delete ";
+            // display the JOptionPane showConfirmDialog
+            int result = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
+            if (result == JOptionPane.YES_OPTION){
+                deleteConfirmed = true;
+            }
+            return deleteConfirmed;
     }
     public class DetailButtonListener implements ActionListener
     {

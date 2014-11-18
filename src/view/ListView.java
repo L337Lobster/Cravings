@@ -50,7 +50,7 @@ public class ListView extends javax.swing.JPanel {
     }
     public JLabel getCDLabel()
     {
-        return this.typeTitleCDLabel;
+        return this.getTypeTitleCDLabel();
     }
     public ViewType getViewType()
     {
@@ -203,6 +203,7 @@ public class ListView extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         createDeletePanel.add(typeTitleCDLabel, gridBagConstraints);
 
@@ -474,5 +475,19 @@ public class ListView extends javax.swing.JPanel {
      */
     public void setDetailButton(javax.swing.JButton detailButton) {
         this.detailButton = detailButton;
+    }
+
+    /**
+     * @return the typeTitleCDLabel
+     */
+    public javax.swing.JLabel getTypeTitleCDLabel() {
+        return typeTitleCDLabel;
+    }
+
+    /**
+     * @param typeTitleCDLabel the typeTitleCDLabel to set
+     */
+    public void setTypeTitleCDLabel(javax.swing.JLabel typeTitleCDLabel) {
+        this.typeTitleCDLabel = typeTitleCDLabel;
     }
 }

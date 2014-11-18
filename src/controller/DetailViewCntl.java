@@ -22,6 +22,7 @@ public class DetailViewCntl {
     MainFrameView frame;
     FSE theFse;
     Food theFood;
+    boolean editing = false;
     public DetailViewCntl(DetailView view, MainFrameView frame, Food theFood)
     {
         this.view = view;
@@ -40,7 +41,9 @@ public class DetailViewCntl {
     private void initView() {
         
         MainMenuButtonListener goBack = new MainMenuButtonListener();
+        EditButtonListener editDetail = new EditButtonListener();
         view.getMainMenuButton().addActionListener(goBack);
+        view.getEditButton().addActionListener(editDetail);
         
         switch(view.getViewType())
         {
@@ -105,7 +108,7 @@ public class DetailViewCntl {
                 break;
         }
     }
-        public class MainMenuButtonListener implements ActionListener
+    public class MainMenuButtonListener implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e)
@@ -113,5 +116,39 @@ public class DetailViewCntl {
             frame.getMainFrameCntl().getAuthenticationCntl().showMainMenuUI(view);
         }
     }
-    
+        
+    public class EditButtonListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            if(!editing)
+            {
+                view.getDetailTitle().setEditable(true);
+                view.getEditButton().setText("Save");
+                editing = true;
+            }
+            else if(editing)
+            {
+                int code = 0;
+                editing = false;
+                view.getEditButton().setText("Edit");
+                view.getDetailTitle().setEditable(false);
+                switch(view.getViewType())
+                {
+                    case FOOD:
+                        code = DetailViewCntl.this.theFood.getCode();
+                        frame.getMainFrameCntl().getAuthenticationCntl().getFoodList().getFoodByCode(code).setFoodName(view.getDetailTitle().getText());
+                        break;
+                    case FSE:
+                        code = DetailViewCntl.this.theFse.getCode();
+                        frame.getMainFrameCntl().getAuthenticationCntl().getFseList().getFseByCode(code).setName(view.getDetailTitle().getText());
+                        break;
+                }
+                SerializedDataCntl.getSerializedDataCntl().writeSerializedDataModel();
+                view.repaint();
+                view.revalidate();
+            }
+        }
+    }
 }
