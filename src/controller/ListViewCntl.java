@@ -191,7 +191,7 @@ public class ListViewCntl {
             if(ListViewCntl.this.view.getViewType() == ViewType.FOOD)
             {
                 int row = view.getTable().getSelectedRow();
-                Food temp = frame.getMainFrameCntl().getAuthenticationCntl().getFoodList().getFoodByCode((Integer)view.getTable().getValueAt(row, 0));
+                Food temp = frame.getMainFrameCntl().getAuthenticationCntl().getFoodList().getFoodByCode(Integer.parseInt((String)view.getTable().getValueAt(row, 0)));
                 frame.getMainFrameCntl().getAuthenticationCntl().showDetailView(ViewType.FOOD, temp, view);
             }
             else if(ListViewCntl.this.view.getViewType() == ViewType.FSE)

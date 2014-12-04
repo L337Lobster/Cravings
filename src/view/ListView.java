@@ -179,6 +179,7 @@ public class ListView extends javax.swing.JPanel {
         readPane.setMinimumSize(new java.awt.Dimension(550, 300));
         readPane.setPreferredSize(new java.awt.Dimension(550, 300));
 
+        viewReadData.setAutoCreateRowSorter(true);
         viewReadData.setModel(this.theTableModel);
         viewReadData.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         viewReadData.setFillsViewportHeight(true);

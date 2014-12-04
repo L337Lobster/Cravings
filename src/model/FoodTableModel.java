@@ -70,7 +70,7 @@ public class FoodTableModel extends AbstractTableModel{
         switch(col)
         {
             case 0:
-                return theFood.getCode();
+                return String.format("%06d",theFood.getCode());
             case 1:
                 return theFood.getFoodName();
             case 2:
