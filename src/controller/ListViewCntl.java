@@ -188,18 +188,32 @@ public class ListViewCntl {
         @Override
         public void actionPerformed(ActionEvent e)
         {
+            boolean isSelected = false;
+            for(int i = 0; i < view.getTable().getRowCount(); i++)
+            {
+                if(view.getTable().isRowSelected(i))
+                {
+                    isSelected = true;
+                }
+            }
             if(ListViewCntl.this.view.getViewType() == ViewType.FOOD)
             {
-                int row = view.getTable().getSelectedRow();
-                Food temp = frame.getMainFrameCntl().getAuthenticationCntl().getFoodList().getFoodByCode(Integer.parseInt((String)view.getTable().getValueAt(row, 0)));
-                frame.getMainFrameCntl().getAuthenticationCntl().showDetailView(ViewType.FOOD, temp, view);
+                if(isSelected)
+                {
+                    int row = view.getTable().getSelectedRow();
+                    Food temp = frame.getMainFrameCntl().getAuthenticationCntl().getFoodList().getFoodByCode(Integer.parseInt((String)view.getTable().getValueAt(row, 0)));
+                    frame.getMainFrameCntl().getAuthenticationCntl().showDetailView(ViewType.FOOD, temp, view);
+                }
             }
             else if(ListViewCntl.this.view.getViewType() == ViewType.FSE)
             {
-                int row = view.getTable().getSelectedRow();
-                FseTableModel tempModel = (FseTableModel)view.getTableModel();
-                FSE temp = (FSE)tempModel.getFSEAt(row);
-                frame.getMainFrameCntl().getAuthenticationCntl().showDetailView(ViewType.FSE, temp, view);
+                if(isSelected)
+                {
+                    int row = view.getTable().getSelectedRow();
+                    FseTableModel tempModel = (FseTableModel)view.getTableModel();
+                    FSE temp = (FSE)tempModel.getFSEAt(row);
+                    frame.getMainFrameCntl().getAuthenticationCntl().showDetailView(ViewType.FSE, temp, view);
+                }
             }
         }
     }

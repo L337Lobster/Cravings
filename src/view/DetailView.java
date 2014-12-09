@@ -20,6 +20,11 @@ public class DetailView extends javax.swing.JPanel {
     public DetailView(ViewType viewType) {
         this.viewType = viewType;
         initComponents();
+        if(this.viewType == ViewType.FOOD)
+        {
+            this.hoursTable.setVisible(false);
+            this.jScrollPane2.setVisible(false);
+        }
     }
 
     /**
@@ -32,6 +37,8 @@ public class DetailView extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        hoursTable = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         detailDetails = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
@@ -48,25 +55,55 @@ public class DetailView extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(600, 801));
         setLayout(new java.awt.GridBagLayout());
 
-        jScrollPane1.setMaximumSize(new java.awt.Dimension(560, 630));
-        jScrollPane1.setMinimumSize(new java.awt.Dimension(560, 630));
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(560, 630));
+        jScrollPane2.setMaximumSize(new java.awt.Dimension(300, 300));
+        jScrollPane2.setMinimumSize(new java.awt.Dimension(300, 300));
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(300, 300));
+
+        hoursTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        hoursTable.setMaximumSize(new java.awt.Dimension(300, 300));
+        hoursTable.setMinimumSize(new java.awt.Dimension(300, 300));
+        hoursTable.setPreferredSize(new java.awt.Dimension(300, 300));
+        jScrollPane2.setViewportView(hoursTable);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(jScrollPane2, gridBagConstraints);
+
+        jScrollPane1.setMaximumSize(new java.awt.Dimension(560, 330));
+        jScrollPane1.setMinimumSize(new java.awt.Dimension(360, 330));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(360, 330));
 
         detailDetails.setEditable(false);
         detailDetails.setColumns(5);
         detailDetails.setLineWrap(true);
         detailDetails.setRows(1);
         detailDetails.setWrapStyleWord(true);
-        detailDetails.setMaximumSize(new java.awt.Dimension(540, 630));
-        detailDetails.setMinimumSize(new java.awt.Dimension(540, 630));
-        detailDetails.setPreferredSize(new java.awt.Dimension(540, 630));
+        detailDetails.setMaximumSize(new java.awt.Dimension(540, 330));
+        detailDetails.setMinimumSize(new java.awt.Dimension(540, 330));
+        detailDetails.setPreferredSize(new java.awt.Dimension(540, 330));
         jScrollPane1.setViewportView(detailDetails);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -162,8 +199,10 @@ public class DetailView extends javax.swing.JPanel {
     private javax.swing.JButton editButton;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
+    private javax.swing.JTable hoursTable;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton mainMenuButton;
     // End of variables declaration//GEN-END:variables
 
