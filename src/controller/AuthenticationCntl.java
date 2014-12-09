@@ -36,7 +36,6 @@ public class AuthenticationCntl {
     public AuthenticationCntl()
     {
         theUserList = new UserList();
-        theFseList = new FseList();
         theExternalDataCntl = new ExternalDataCntl();
         theFoodList = theExternalDataCntl.getTheFoodList();
         theFoodGenreList = theExternalDataCntl.getTheFoodGenreList();
