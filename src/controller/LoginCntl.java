@@ -60,6 +60,7 @@ public class LoginCntl {
         view.add(view.getLoginButton());
         LoginListener theLoginListener = new LoginListener();
         view.getLoginButton().addActionListener(theLoginListener);
+        view.getUsernameField().requestFocus();
     }
     public class LoginListener implements ActionListener
     {

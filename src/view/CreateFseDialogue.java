@@ -69,10 +69,8 @@ public class CreateFseDialogue extends javax.swing.JDialog {
         filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(420, 275));
         setMinimumSize(new java.awt.Dimension(420, 275));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(420, 275));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         newFseName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N

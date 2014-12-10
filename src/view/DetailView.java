@@ -6,6 +6,7 @@
 package view;
 
 import cravings.ViewType;
+import model.HoursTableModel;
 
 /**
  *
@@ -23,8 +24,18 @@ public class DetailView extends javax.swing.JPanel {
         if(this.viewType == ViewType.FOOD)
         {
             this.hoursTable.setVisible(false);
-            this.jScrollPane2.setVisible(false);
         }
+    }
+    public DetailView(ViewType viewType, HoursTableModel model)
+    {
+        this.viewType = viewType;
+        initComponents();
+        this.hoursTable.setModel(model);
+        if(this.viewType == ViewType.FOOD)
+        {
+            this.hoursTable.setVisible(false);
+        }
+        System.out.println(hoursTable.getRowHeight());
     }
 
     /**
@@ -49,37 +60,39 @@ public class DetailView extends javax.swing.JPanel {
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 32767));
         mainMenuButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(125, 0), new java.awt.Dimension(125, 0), new java.awt.Dimension(200, 32767));
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 20), new java.awt.Dimension(0, 20), new java.awt.Dimension(32767, 20));
+        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 130), new java.awt.Dimension(0, 130), new java.awt.Dimension(32767, 130));
 
         setMaximumSize(new java.awt.Dimension(600, 800));
         setMinimumSize(new java.awt.Dimension(600, 800));
         setPreferredSize(new java.awt.Dimension(600, 801));
         setLayout(new java.awt.GridBagLayout());
 
-        jScrollPane2.setMaximumSize(new java.awt.Dimension(300, 300));
-        jScrollPane2.setMinimumSize(new java.awt.Dimension(300, 300));
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(300, 300));
+        jScrollPane2.setMaximumSize(new java.awt.Dimension(200, 150));
+        jScrollPane2.setMinimumSize(new java.awt.Dimension(200, 150));
+        jScrollPane2.setName(""); // NOI18N
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(200, 150));
 
         hoursTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        hoursTable.setMaximumSize(new java.awt.Dimension(300, 300));
-        hoursTable.setMinimumSize(new java.awt.Dimension(300, 300));
-        hoursTable.setPreferredSize(new java.awt.Dimension(300, 300));
+        hoursTable.setFillsViewportHeight(true);
+        hoursTable.setMaximumSize(new java.awt.Dimension(200, 112));
+        hoursTable.setMinimumSize(new java.awt.Dimension(200, 112));
+        hoursTable.setPreferredSize(new java.awt.Dimension(200, 112));
         jScrollPane2.setViewportView(hoursTable);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -102,7 +115,7 @@ public class DetailView extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
@@ -157,7 +170,7 @@ public class DetailView extends javax.swing.JPanel {
         gridBagConstraints.gridy = 1;
         add(detailSubTitle, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 3;
         add(filler1, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -170,7 +183,7 @@ public class DetailView extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         add(mainMenuButton, gridBagConstraints);
@@ -180,10 +193,31 @@ public class DetailView extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         add(editButton, gridBagConstraints);
+
+        jButton1.setText("jButton1");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        add(jButton1, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 2;
+        add(filler3, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        add(filler4, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        add(filler5, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void detailSubTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailSubTitleActionPerformed
@@ -199,7 +233,11 @@ public class DetailView extends javax.swing.JPanel {
     private javax.swing.JButton editButton;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler filler3;
+    private javax.swing.Box.Filler filler4;
+    private javax.swing.Box.Filler filler5;
     private javax.swing.JTable hoursTable;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

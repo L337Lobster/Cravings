@@ -74,7 +74,8 @@ public class AuthenticationCntl {
     }
     public void showDetailView(ViewType detailType, FSE theFse, JPanel panel)
     {
-        theDetailView = new DetailView(ViewType.FSE);
+        HoursTableModel model = new HoursTableModel(theFse, this);
+        theDetailView = new DetailView(ViewType.FSE, model);
         DetailViewCntl foodDetailCntl = new DetailViewCntl(theDetailView, theMainFrameView, theFse);
         theMainFrameView.getMainFrameCntl().replacePanel(panel, theDetailView);
     }
