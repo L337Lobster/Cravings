@@ -166,6 +166,11 @@ public class ListViewCntl {
                     
                     break;
                 case 2: //delete
+                    
+                    if(view.getViewType() == ViewType.FOOD)
+                    {
+                        SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTheFoodList().getTheFoodList().remove(SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTheFoodList().getFoodByCode(Integer.parseInt(view.getCDText().getText())));
+                    }
                     break;
 
             }
