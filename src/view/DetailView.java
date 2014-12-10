@@ -61,9 +61,10 @@ public class DetailView extends javax.swing.JPanel {
         mainMenuButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(125, 0), new java.awt.Dimension(125, 0), new java.awt.Dimension(200, 32767));
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(120, 0), new java.awt.Dimension(120, 0), new java.awt.Dimension(200, 32767));
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 20), new java.awt.Dimension(0, 20), new java.awt.Dimension(32767, 20));
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 130), new java.awt.Dimension(0, 130), new java.awt.Dimension(32767, 130));
+        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 32767));
 
         setMaximumSize(new java.awt.Dimension(600, 800));
         setMinimumSize(new java.awt.Dimension(600, 800));
@@ -198,7 +199,8 @@ public class DetailView extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         add(editButton, gridBagConstraints);
 
-        jButton1.setText("jButton1");
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton1.setText("Back");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
@@ -207,7 +209,7 @@ public class DetailView extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         add(jButton1, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 2;
         add(filler3, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -218,6 +220,10 @@ public class DetailView extends javax.swing.JPanel {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
         add(filler5, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 2;
+        add(filler6, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void detailSubTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailSubTitleActionPerformed
@@ -236,6 +242,7 @@ public class DetailView extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
     private javax.swing.Box.Filler filler5;
+    private javax.swing.Box.Filler filler6;
     private javax.swing.JTable hoursTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
