@@ -5,7 +5,9 @@
  */
 package cravings;
 
+import controller.SerializedDataCntl;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,6 +19,7 @@ public class FSE implements Serializable{
     private FSEAddress address;
     private int[] openHour = new int[8];
     private int[] closeHour = new int[8];
+    private Menu menu;
     
     public FSE(int code, String name, FSEAddress address, int[] open, int[] close)
     {
@@ -24,11 +27,13 @@ public class FSE implements Serializable{
         this.address = address;
         openHour = open;
         closeHour = close;
+        buildMenu();
     }
     public FSE(String importString)
     {
         String delimiter = "~";
         String[] tokens = importString.split(delimiter);
+        menu = new Menu();
         code = Integer.parseInt(tokens[1]);
         name = tokens[3];
         int j = 1;
@@ -42,6 +47,20 @@ public class FSE implements Serializable{
             j++;
         }
         address = new FSEAddress(tokens[11]);
+        buildMenu();
+    }
+    public void buildMenu()
+    {
+        ArrayList<Food> temp = SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTheFoodList().getTheFoodList();
+        menu.clearMenu();
+        double r = Math.random();
+        int x = 0;
+        for(int i = 0; i < 10; i++)
+        {
+            r = Math.random();
+            x = (int)(r * temp.size());
+            menu.getMenu().add(temp.get(x));
+        }
     }
     @Override
     public boolean equals(Object o)
@@ -143,5 +162,19 @@ public class FSE implements Serializable{
      */
     public void setCode(int code) {
         this.code = code;
+    }
+
+    /**
+     * @return the menu
+     */
+    public Menu getMenu() {
+        return menu;
+    }
+
+    /**
+     * @param menu the menu to set
+     */
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 }

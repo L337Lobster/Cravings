@@ -49,7 +49,7 @@ public class FseList implements Serializable{
     }
     public int getNextCode()
     {
-        int temp = 0;
+        int temp = 100;
         for(int i = 0; i < theFseList.size(); i++)
         {
             if(theFseList.get(i).getCode() > temp)
@@ -57,7 +57,7 @@ public class FseList implements Serializable{
                 temp = theFseList.get(i).getCode();
             }
         }
-        temp+=1;
+        temp+=100;
         return temp;
     }
     public ArrayList<String> getStringListOfFSEs()

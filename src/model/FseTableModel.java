@@ -19,7 +19,7 @@ import javax.swing.table.AbstractTableModel;
 public class FseTableModel extends AbstractTableModel{
     
     private ArrayList<FSE> theData = new ArrayList();
-    private String[] theColumns = new String[]{"Name", "Address", "Hours"}; 
+    private String[] theColumns = new String[]{"ID","Name", "Address", "Hours"}; 
     private AuthenticationCntl theAuthenticationCntl;
     
     public FseTableModel()
@@ -73,10 +73,12 @@ public class FseTableModel extends AbstractTableModel{
         switch(col)
         {
             case 0:
-                return theFSE.getName();
+                return theFSE.getCode();
             case 1:
-                return theFSE.getAddress().getShortValue();
+                return theFSE.getName();
             case 2:
+                return theFSE.getAddress().getShortValue();
+            case 3:
                 Calendar c = Calendar.getInstance();
                 c.setTime(c.getTime());
                 int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);

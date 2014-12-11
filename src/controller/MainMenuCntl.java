@@ -65,6 +65,8 @@ public class MainMenuCntl {
         view.getFoodButton().addActionListener(theFoodListener);
         FseButtonListener theFseListener = new FseButtonListener();
         view.getFseButton().addActionListener(theFseListener);
+        FindFoodButtonListener theFindListener = new FindFoodButtonListener();
+        view.getFindFoodButton().addActionListener(theFindListener);
     }
     
     public void initBounds()
@@ -74,7 +76,15 @@ public class MainMenuCntl {
         view.getFindFoodButton().setBounds(new Rectangle(0,model.getSizeValue().height/2,model.getSizeValue().width/2,model.getSizeValue().height/2));
         view.getQuitButton().setBounds(new Rectangle(model.getSizeValue().width/2,model.getSizeValue().height/2,model.getSizeValue().width/2,model.getSizeValue().height/2));
     }
-    
+    public class FindFoodButtonListener implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            frame.getMainFrameCntl().getAuthenticationCntl().showFindFoodView(view);
+        }
+        
+    }
     public class FoodButtonListener implements ActionListener
     {
         @Override

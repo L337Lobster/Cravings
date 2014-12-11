@@ -50,11 +50,13 @@ public class ListViewCntl {
         {
             frame.getMainFrameCntl().setTitle("FSE List");
             view.getCDLabel().setText("FSE Name:");
+            view.getViewTitle().setText("Fse List");
         }
         else if(listType.toString().equalsIgnoreCase("food"))
         {
             frame.getMainFrameCntl().setTitle("Food List");
             view.getCDLabel().setText("Food Name:");
+            view.getViewTitle().setText("Food List");
         }
         else
         {
@@ -170,6 +172,10 @@ public class ListViewCntl {
                     if(view.getViewType() == ViewType.FOOD)
                     {
                         SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTheFoodList().getTheFoodList().remove(SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getTheFoodList().getFoodByCode(Integer.parseInt(view.getCDText().getText())));
+                    }
+                    if(view.getViewType() == ViewType.FSE)
+                    {
+                        SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getFseList().getListOfFSEs().remove(SerializedDataCntl.getSerializedDataCntl().getSerializedDataModel().getFseList().getFseByCode(Integer.parseInt(view.getCDText().getText())));
                     }
                     break;
 

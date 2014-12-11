@@ -27,6 +27,7 @@ public class AuthenticationCntl {
     private MainMenuView theMainMenuView;
     private ListView theListView;
     private DetailView theDetailView;
+    private FindFoodView theFindFoodView;
     private FseList theFseList;
     private FoodList theFoodList;
     private FoodGenreList theFoodGenreList;
@@ -66,6 +67,14 @@ public class AuthenticationCntl {
         ListViewCntl theListViewCntl = new ListViewCntl(theListView, theMainFrameView);
         theMainFrameView.getMainFrameCntl().replacePanel(panel, theListView);
     }
+    public void showFindFoodView(JPanel panel)
+    {
+        FoodTableModel theFoodTableModel = new FoodTableModel(theFoodList.getTheFoodList(), this);
+        theFindFoodView = new FindFoodView(theFoodTableModel);
+        FindFoodCntl findCntl = new FindFoodCntl(theFindFoodView, theMainFrameView);
+        theMainFrameView.getMainFrameCntl().replacePanel(panel, theFindFoodView);
+        
+    }
     public void showDetailView(ViewType detailType, Food theFood, JPanel panel)
     {
         theDetailView = new DetailView(ViewType.FOOD);
@@ -75,7 +84,8 @@ public class AuthenticationCntl {
     public void showDetailView(ViewType detailType, FSE theFse, JPanel panel)
     {
         HoursTableModel model = new HoursTableModel(theFse, this);
-        theDetailView = new DetailView(ViewType.FSE, model);
+        MenuTableModel menuModel = new MenuTableModel(theFse, this);
+        theDetailView = new DetailView(ViewType.FSE, model, menuModel);
         DetailViewCntl foodDetailCntl = new DetailViewCntl(theDetailView, theMainFrameView, theFse);
         theMainFrameView.getMainFrameCntl().replacePanel(panel, theDetailView);
     }

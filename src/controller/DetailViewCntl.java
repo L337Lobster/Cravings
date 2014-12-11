@@ -8,6 +8,7 @@ package controller;
 import cravings.DayOfTheWeek;
 import cravings.FSE;
 import cravings.Food;
+import cravings.ViewType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import view.DetailView;
@@ -40,11 +41,12 @@ public class DetailViewCntl {
 
     private void initView() {
         
-        MainMenuButtonListener goBack = new MainMenuButtonListener();
+        MainMenuButtonListener mainMenu = new MainMenuButtonListener();
         EditButtonListener editDetail = new EditButtonListener();
-        view.getMainMenuButton().addActionListener(goBack);
+        view.getMainMenuButton().addActionListener(mainMenu);
         view.getEditButton().addActionListener(editDetail);
-        
+        BackButtonListener goBack = new BackButtonListener();
+        view.getBackButton().addActionListener(goBack);
         switch(view.getViewType())
         {
             case FOOD:
@@ -116,7 +118,15 @@ public class DetailViewCntl {
             frame.getMainFrameCntl().getAuthenticationCntl().showMainMenuUI(view);
         }
     }
+    public class BackButtonListener implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            frame.getMainFrameCntl().getAuthenticationCntl().showListView(view.getViewType(), view);
+        }
         
+    }
     public class EditButtonListener implements ActionListener
     {
         @Override

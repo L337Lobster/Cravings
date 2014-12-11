@@ -6,7 +6,9 @@
 package view;
 
 import cravings.ViewType;
+import javax.swing.JButton;
 import model.HoursTableModel;
+import model.MenuTableModel;
 
 /**
  *
@@ -24,18 +26,15 @@ public class DetailView extends javax.swing.JPanel {
         if(this.viewType == ViewType.FOOD)
         {
             this.hoursTable.setVisible(false);
+            this.menuTable.setVisible(false);
         }
     }
-    public DetailView(ViewType viewType, HoursTableModel model)
+    public DetailView(ViewType viewType, HoursTableModel model, MenuTableModel menuModel)
     {
         this.viewType = viewType;
         initComponents();
         this.hoursTable.setModel(model);
-        if(this.viewType == ViewType.FOOD)
-        {
-            this.hoursTable.setVisible(false);
-        }
-        System.out.println(hoursTable.getRowHeight());
+        this.menuTable.setModel(menuModel);
     }
 
     /**
@@ -60,10 +59,12 @@ public class DetailView extends javax.swing.JPanel {
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 32767));
         mainMenuButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(125, 0), new java.awt.Dimension(125, 0), new java.awt.Dimension(200, 32767));
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 20), new java.awt.Dimension(0, 20), new java.awt.Dimension(32767, 20));
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 130), new java.awt.Dimension(0, 130), new java.awt.Dimension(32767, 130));
+        jScrollPane4 = new javax.swing.JScrollPane();
+        menuTable = new javax.swing.JTable();
 
         setMaximumSize(new java.awt.Dimension(600, 800));
         setMinimumSize(new java.awt.Dimension(600, 800));
@@ -91,7 +92,7 @@ public class DetailView extends javax.swing.JPanel {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
@@ -114,7 +115,7 @@ public class DetailView extends javax.swing.JPanel {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -137,7 +138,7 @@ public class DetailView extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.gridheight = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         add(jPanel1, gridBagConstraints);
 
@@ -171,11 +172,11 @@ public class DetailView extends javax.swing.JPanel {
         add(detailSubTitle, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         add(filler1, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         add(filler2, gridBagConstraints);
 
         mainMenuButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -198,26 +199,52 @@ public class DetailView extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         add(editButton, gridBagConstraints);
 
-        jButton1.setText("jButton1");
+        backButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        backButton.setText("Back");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        add(jButton1, gridBagConstraints);
+        add(backButton, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
         add(filler3, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 5;
         add(filler4, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 7;
         add(filler5, gridBagConstraints);
+
+        jScrollPane4.setMaximumSize(new java.awt.Dimension(300, 400));
+        jScrollPane4.setMinimumSize(new java.awt.Dimension(300, 400));
+        jScrollPane4.setPreferredSize(new java.awt.Dimension(300, 400));
+
+        menuTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        menuTable.setMaximumSize(new java.awt.Dimension(300, 400));
+        menuTable.setMinimumSize(new java.awt.Dimension(300, 400));
+        menuTable.setPreferredSize(new java.awt.Dimension(300, 400));
+        jScrollPane4.setViewportView(menuTable);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 3;
+        add(jScrollPane4, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void detailSubTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailSubTitleActionPerformed
@@ -226,6 +253,7 @@ public class DetailView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
     private javax.swing.JTextArea detailDetails;
     private javax.swing.JLabel detailPicture;
     private javax.swing.JTextField detailSubTitle;
@@ -237,11 +265,12 @@ public class DetailView extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler4;
     private javax.swing.Box.Filler filler5;
     private javax.swing.JTable hoursTable;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JButton mainMenuButton;
+    private javax.swing.JTable menuTable;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -250,7 +279,10 @@ public class DetailView extends javax.swing.JPanel {
     public ViewType getViewType() {
         return viewType;
     }
-
+    public JButton getBackButton()
+    {
+        return this.backButton;
+    }
     /**
      * @param viewType the viewType to set
      */

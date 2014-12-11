@@ -46,7 +46,7 @@ public class ListView extends javax.swing.JPanel {
     }
     public AbstractTableModel getTableModel()
     {
-        return this.theTableModel;
+        return this.getTheTableModel();
     }
     public JLabel getCDLabel()
     {
@@ -490,5 +490,33 @@ public class ListView extends javax.swing.JPanel {
      */
     public void setTypeTitleCDLabel(javax.swing.JLabel typeTitleCDLabel) {
         this.typeTitleCDLabel = typeTitleCDLabel;
+    }
+
+    /**
+     * @return the theTableModel
+     */
+    public AbstractTableModel getTheTableModel() {
+        return theTableModel;
+    }
+
+    /**
+     * @param theTableModel the theTableModel to set
+     */
+    public void setTheTableModel(AbstractTableModel theTableModel) {
+        this.theTableModel = theTableModel;
+    }
+
+    /**
+     * @return the viewTitle
+     */
+    public javax.swing.JLabel getViewTitle() {
+        return viewTitle;
+    }
+
+    /**
+     * @param viewTitle the viewTitle to set
+     */
+    public void setViewTitle(javax.swing.JLabel viewTitle) {
+        this.viewTitle = viewTitle;
     }
 }
